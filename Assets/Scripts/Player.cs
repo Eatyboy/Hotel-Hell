@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public static Player instance;
     private InputSystem_Actions ctrl;
     private bool paused = false;
+    private bool selected = false; 
 
     [SerializeField] private Satan satan;
     [SerializeField] private Image mc;
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour
         paused = !paused; 
         if (paused)
         {
+            myPauseController.resetPause();
             GameManager.instance.Pause();
         }
         else
@@ -98,6 +100,9 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(1);
             return;
         }
+
+        if (selected) {return;}
+
         StartCoroutine(SendToFloor(HellCircle.Limbo));
         myPauseController.updateEachSin(0);
     }
@@ -108,6 +113,8 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(2);
             return;
         }
+
+        if (selected) {return;}
         StartCoroutine(SendToFloor(HellCircle.Lust));
         myPauseController.updateEachSin(1);
         
@@ -119,6 +126,8 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(3);
             return;
         }
+
+        if (selected) {return;}
         StartCoroutine(SendToFloor(HellCircle.Gluttony));
         myPauseController.updateEachSin(2);
     }
@@ -129,6 +138,8 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(4);
             return;
         }
+
+        if (selected) {return;}
         StartCoroutine(SendToFloor(HellCircle.Greed));
         myPauseController.updateEachSin(3);
     }
@@ -139,6 +150,8 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(5);
             return;
         }
+
+        if (selected) {return;}
         StartCoroutine(SendToFloor(HellCircle.Anger));
         myPauseController.updateEachSin(4);
     }
@@ -149,6 +162,8 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(6);
             return;
         }
+
+        if (selected) {return;}
         StartCoroutine(SendToFloor(HellCircle.Heresy));
         myPauseController.updateEachSin(5);
     }
@@ -159,6 +174,8 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(7);
             return;
         }
+
+        if (selected) {return;}
         StartCoroutine(SendToFloor(HellCircle.Violence));
         myPauseController.updateEachSin(6);
     }
@@ -169,6 +186,8 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(8);
             return;
         }
+
+        if (selected) {return;}
         StartCoroutine(SendToFloor(HellCircle.Fraud));
         myPauseController.updateEachSin(7);
     }
@@ -179,6 +198,8 @@ public class Player : MonoBehaviour
             myPauseController.OnFloorButtonPressed(9);
             return;
         }
+
+        if (selected) {return;}
         StartCoroutine(SendToFloor(HellCircle.Treachery));
         myPauseController.updateEachSin(8);
     }
@@ -186,6 +207,7 @@ public class Player : MonoBehaviour
     public IEnumerator SendToFloor(HellCircle floor)
     {
         AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorButton);
+        selected = true;
 
         Color oldNumColor = floorNumTMPs[(int)floor - 1].color;
         Color oldNameColor = floorNameTMPs[(int)floor - 1].color;
@@ -223,6 +245,7 @@ public class Player : MonoBehaviour
         }
 
         yield return new WaitForSeconds(nextSinnerDelay);
+        selected = false;
 
         yield return SinnerManager.instance.NextSinner();
     }

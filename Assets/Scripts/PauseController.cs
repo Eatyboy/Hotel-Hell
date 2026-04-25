@@ -13,9 +13,7 @@ public class PauseController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        sinName.enabled = false;
-        sinDescription.enabled = false;
-        sinImage.enabled = false;
+        resetPause();
     }
 
     // Update is called once per frame
@@ -39,9 +37,10 @@ public class PauseController : MonoBehaviour
         float width = spawnArea.rect.width - 100;
         float height = spawnArea.rect.height - 100;
         float randomX = Random.Range(-width / 2, width / 2);
-        float randomY = Random.Range(-height / 2, height / 2);
+        float bottomY = -height / 2;
 
-        newImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(randomX, randomY);
+
+        newImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(randomX, bottomY);
     }
 
     public void OnFloorButtonPressed(int floorNumber)
@@ -71,5 +70,12 @@ public class PauseController : MonoBehaviour
         }
     }
 
+    public void resetPause()
+    {
+        sinName.enabled = false;
+        sinDescription.enabled = false;
+        sinImage.enabled = false;
+        ClearSpawnedSinners();
+    }
 
 }

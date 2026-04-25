@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 199034641219103245, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1359204618574023297, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
       propertyPath: m_SizeDelta.y
@@ -399,36 +399,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   floors:
   - sinName: LIMBO
-    sinDescription: "\tAverage chaps. Didn\u2019t do anything wrong, but here they
+    sinDescription: "Average chaps. Didn\u2019t do anything wrong, but here they
       stay. "
-    hellSprite: {fileID: 21300000, guid: 20547f2fd9ab77c438f3e19153a69929, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: a507cb73847e54adb94527760f910ca0, type: 3}
   - sinName: LUST
     sinDescription: "Believes they\u2019re some sort of harem anime protagonist. "
-    hellSprite: {fileID: 21300000, guid: dc9580654d17f95449b43444922d9abe, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: b7e801c2a41c143b8a440a268ddbda61, type: 3}
   - sinName: GLUTTONY
     sinDescription: 'Self-indulgent, lazy, wasteful beings. '
-    hellSprite: {fileID: -5293263070474621911, guid: 4e0f842f211b2414f9f408dd313b76a4, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: 79c7465ca006b4ae880bf9a67fb4cfb5, type: 3}
   - sinName: GREED
     sinDescription: "Guard my belongings, Receptionist. These people really do steal
       anything\u2026 "
-    hellSprite: {fileID: -5293263070474621911, guid: 4e0f842f211b2414f9f408dd313b76a4, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: 329a2405a2c3d47edb1f40b2f31768f5, type: 3}
   - sinName: ANGER
     sinDescription: 'Has only hate in their soul, but too scared to commit acts of
       violence. '
-    hellSprite: {fileID: -5293263070474621911, guid: 4e0f842f211b2414f9f408dd313b76a4, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: cf161ab8010b44e26a2d9e54424dd078, type: 3}
   - sinName: HERESY
     sinDescription: "Dirty, dirty, liars. Don\u2019t let them fool you, Receptionist."
-    hellSprite: {fileID: -5293263070474621911, guid: 4e0f842f211b2414f9f408dd313b76a4, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: 3f2695ab53131446c837115b0a6fa2ca, type: 3}
   - sinName: VIOLENCE
     sinDescription: These chaps hurt others. Physically.
-    hellSprite: {fileID: -5293263070474621911, guid: 4e0f842f211b2414f9f408dd313b76a4, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: aed0f14130379433690f788c1909782e, type: 3}
   - sinName: FRAUD
     sinDescription: Lying on a larger scale compared to Heresy. Usually for profit.
-    hellSprite: {fileID: -5293263070474621911, guid: 4e0f842f211b2414f9f408dd313b76a4, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: b25b4a362393548f0a09c98f69316168, type: 3}
   - sinName: TREACHERY
     sinDescription: 'Traitors of the worst kind. Not an ounce of loyalty in their
       bones. '
-    hellSprite: {fileID: -5293263070474621911, guid: 4e0f842f211b2414f9f408dd313b76a4, type: 3}
+    hellSprite: {fileID: 6947775041736957420, guid: b43591b86d3054cab8f2610de93f64ed, type: 3}
   sinName: {fileID: 2062044034}
   sinDescription: {fileID: 1207214585}
   sinImage: {fileID: 652694169}
@@ -694,8 +694,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.00002, y: 379.99997}
-  m_SizeDelta: {x: 1216.4386, y: 630.2627}
+  m_AnchoredPosition: {x: 58, y: 379.99997}
+  m_SizeDelta: {x: 865.3604, y: 630.2627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &652694168
 CanvasRenderer:
@@ -727,7 +727,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

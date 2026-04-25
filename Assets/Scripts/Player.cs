@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [Header("References")]
     public static Player instance;
     private InputSystem_Actions ctrl;
+    private bool paused = false;
+
+    public GameManager gameManager;
     [SerializeField] private Satan satan;
     [SerializeField] private Image mc;
     [SerializeField] private Sprite mcDefault;
@@ -67,50 +70,68 @@ public class Player : MonoBehaviour
 
     private void Zero(InputAction.CallbackContext ctx)
     {
+        paused = !paused; 
+        if (paused)
+        {
+            gameManager.Pause();
+        }
+        else
+        {
+            gameManager.UnPause();
+        }
     }
 
     private void One(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Limbo));
     }
 
     private void Two(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Lust));
     }
 
     private void Three(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Gluttony));
     }
 
     private void Four(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Greed));
     }
 
     private void Five(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Anger));
     }
 
     private void Six(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Heresy));
     }
 
     private void Seven(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Violence));
     }
 
     private void Eight(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Fraud));
     }
 
     private void Nine(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         StartCoroutine(SendToFloor(HellCircle.Treachery));
     }
 

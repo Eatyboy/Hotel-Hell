@@ -125,7 +125,6 @@ public class Importer
 
         while ((line = sr.ReadLine()) != null)
         {
-            string newDialogue = line.Trim();
             dialogues.Add(line);
         }
 

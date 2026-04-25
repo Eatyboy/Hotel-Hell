@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 1217868284}
   - component: {fileID: 1217868283}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5293263070474621911, guid: 4e0f842f211b2414f9f408dd313b76a4, type: 3}
+  m_Sprite: {fileID: 1480011451222111409, guid: 5823fc25189f444cd981c5bbd0665d14, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -854,7 +854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 497, y: 86}
+  m_AnchoredPosition: {x: 497, y: 51}
   m_SizeDelta: {x: 375.9517, y: 309.806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398163106

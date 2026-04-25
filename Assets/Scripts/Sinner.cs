@@ -1,16 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sinner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public SinnerData data;
+    public Image image;
 
-    // Update is called once per frame
-    void Update()
+    public Sinner(SinnerData data)
     {
-        
+        this.data = data;
+        image.sprite = data.sprite;
     }
 }

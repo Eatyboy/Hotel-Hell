@@ -15,8 +15,9 @@ public enum HellCircle {
 
 public class Sin : ScriptableObject
 {
-    string description = "REPLACE ME";
-    HellCircle hellCircle;
+    public int sinId;
+    public string description = "REPLACE ME";
+    public HellCircle hellCircle;
 }
 
 [System.Serializable]

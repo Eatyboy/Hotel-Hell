@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Sprite mcDefault;
     [SerializeField] private Sprite mcHoldUp;
 
+    public PauseController myPauseController;
+
     [Header("Parameters")]
     public int maxHp = 3;
     public float playerHoldUpSignDuration = 0.5f;
@@ -90,56 +92,93 @@ public class Player : MonoBehaviour
 
     private void One(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(1);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Limbo));
+        myPauseController.updateEachSin(0);
     }
 
     private void Two(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(2);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Lust));
+        myPauseController.updateEachSin(1);
+        
     }
 
     private void Three(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(3);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Gluttony));
+        myPauseController.updateEachSin(2);
     }
 
     private void Four(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(4);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Greed));
+        myPauseController.updateEachSin(3);
     }
 
     private void Five(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(5);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Anger));
+        myPauseController.updateEachSin(4);
     }
 
     private void Six(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(6);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Heresy));
+        myPauseController.updateEachSin(5);
     }
 
     private void Seven(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(7);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Violence));
+        myPauseController.updateEachSin(6);
     }
 
     private void Eight(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(8);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Fraud));
+        myPauseController.updateEachSin(7);
     }
 
     private void Nine(InputAction.CallbackContext ctx)
     {
-        if (paused) {return;}
+        if (paused) {
+            myPauseController.OnFloorButtonPressed(9);
+            return;
+        }
         StartCoroutine(SendToFloor(HellCircle.Treachery));
+        myPauseController.updateEachSin(8);
     }
 
     public IEnumerator SendToFloor(HellCircle floor)

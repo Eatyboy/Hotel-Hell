@@ -48,95 +48,407 @@ MonoBehaviour:
   sinnerSpawnPoint: {fileID: 0}
   canvas: {fileID: 0}
   sinsList:
-  - {fileID: 11400000, guid: f8ebef8ebdb63e0408d32bf2eae9adf1, type: 2}
-  - {fileID: 11400000, guid: bd29ede083a2cf34d8b2febdbb65fa18, type: 2}
-  - {fileID: 11400000, guid: 16a0f232e69907e4881e4425f7c9f87c, type: 2}
-  - {fileID: 11400000, guid: 1699d53ebcb69a24785484146ea352df, type: 2}
-  - {fileID: 11400000, guid: d132b28517a1525438dd0e221e79f279, type: 2}
-  - {fileID: 11400000, guid: fb142fb8bc149504aa7d63549568953e, type: 2}
-  - {fileID: 11400000, guid: 73536f94151ca8b45a942d34bd234c08, type: 2}
-  - {fileID: 11400000, guid: f82c4e960bb77024ba183de2b3dd8634, type: 2}
-  - {fileID: 11400000, guid: 729c8629c127a2545af728248af93dcc, type: 2}
-  - {fileID: 11400000, guid: 7e721ea85c1086146b8a3082001b6ef5, type: 2}
-  - {fileID: 11400000, guid: fbb5785f19a24af4da4d72a913ccc805, type: 2}
-  - {fileID: 11400000, guid: ef1ff1df379834f4a9b2e7867a0d5770, type: 2}
-  - {fileID: 11400000, guid: 1ed928d3de678aa4794e4a9a83f4cb5b, type: 2}
-  - {fileID: 11400000, guid: f25feba08561a774bb72c932418f2dd2, type: 2}
-  - {fileID: 11400000, guid: 102fe7c066b8c644c9b7c715e7c6391e, type: 2}
-  - {fileID: 11400000, guid: 198e5f1f55d4d5a4984031f71fb890c9, type: 2}
-  - {fileID: 11400000, guid: 7b7270930c87a7b4baf76e0dda000a60, type: 2}
-  - {fileID: 11400000, guid: e282fb8d7c7560d4683addc9de2b42b2, type: 2}
-  - {fileID: 11400000, guid: 30a3c75c8acc9bd4a9c6cf6658b29396, type: 2}
-  - {fileID: 11400000, guid: 0e1e2eb018e8f48479b852d93ebd310e, type: 2}
-  - {fileID: 11400000, guid: 2e8ca583183e2574ca8f89f78575c8c8, type: 2}
-  - {fileID: 11400000, guid: 29a45dda756afb0458c13a286a2a877c, type: 2}
-  - {fileID: 11400000, guid: 676d2f103cabc4c48bd6bfdc9c371f18, type: 2}
-  - {fileID: 11400000, guid: 0c33f61208a6f5a419738d8974ec758e, type: 2}
-  - {fileID: 11400000, guid: b17669a7922ca3e4ca7de5259cda03db, type: 2}
-  - {fileID: 11400000, guid: fbf74eea16a93244899ff3775fbedc21, type: 2}
-  - {fileID: 11400000, guid: 5b6fa640b91e6934080596ca78cbd080, type: 2}
-  - {fileID: 11400000, guid: afaa3ddf8c41b694f8fb9e4b74a1926d, type: 2}
-  - {fileID: 11400000, guid: 5f95331800f84bb48a6d3893f06ff092, type: 2}
-  - {fileID: 11400000, guid: 8850e34a3ae24fe4da27682a2b29015d, type: 2}
-  - {fileID: 11400000, guid: 51fbc0a8aea36134f8aff2abd5ed845b, type: 2}
-  - {fileID: 11400000, guid: 9e31ded9298cc3741aa988d94637b17b, type: 2}
-  - {fileID: 11400000, guid: 4d61adcaf77937645a9d5466c1712ad6, type: 2}
-  - {fileID: 11400000, guid: 464e09571bf695642899c392409cad31, type: 2}
-  - {fileID: 11400000, guid: 2a622b466e15d4a49a76503fead76724, type: 2}
-  - {fileID: 11400000, guid: ebd4f7e713ab15b49b140581ffbb71f8, type: 2}
-  - {fileID: 11400000, guid: fe66b5f99cba5004089abc86e42fa88c, type: 2}
-  - {fileID: 11400000, guid: c41ebf00a074ca84ea2ba52ebf421b22, type: 2}
-  - {fileID: 11400000, guid: 4e3734ee03bdc684488a5681d04abeda, type: 2}
-  - {fileID: 11400000, guid: 12e44d525af18654ab4ca7628b1a86b8, type: 2}
-  - {fileID: 11400000, guid: dd8c3fb2e7162a3479d9b4064fabcb63, type: 2}
-  - {fileID: 11400000, guid: 59935407fa927cb47bfdb257eaa3e0ad, type: 2}
-  - {fileID: 11400000, guid: 8a3179a2e5ffd8045967e5ff9acca265, type: 2}
-  - {fileID: 11400000, guid: 9c5eeb5eb37acf945bd2f235e47d41f7, type: 2}
-  - {fileID: 11400000, guid: dc88b67cba9565649acbd2e53ef9be4d, type: 2}
-  - {fileID: 11400000, guid: d68c5ff23756ac8449bfacf5d216fb71, type: 2}
-  - {fileID: 11400000, guid: 75041ce22a76a7f488c5ea7af2368f1d, type: 2}
-  - {fileID: 11400000, guid: 4b609457a6c27f94285c4684f1f2a185, type: 2}
-  - {fileID: 11400000, guid: b877174c53839704dbf718f61a532a67, type: 2}
-  - {fileID: 11400000, guid: 8d88eabbb26d4a244b48ac1d5ca90fc2, type: 2}
-  - {fileID: 11400000, guid: c5740d04d9abb1741b46b59187fc054c, type: 2}
-  - {fileID: 11400000, guid: 8abe385548cd3f04c87f549d47e119d2, type: 2}
-  - {fileID: 11400000, guid: 5164ec45ba83c7d4494fd3ce34f5fc52, type: 2}
-  - {fileID: 11400000, guid: 0b447f8387ad2ea4492012c3905dbe08, type: 2}
-  - {fileID: 11400000, guid: a674bf7ed0d66dc47b87525c3c905a6b, type: 2}
-  - {fileID: 11400000, guid: e0ac402681637334992abe01db55cf83, type: 2}
-  - {fileID: 11400000, guid: 386e8be3af4d41448af785149b2376a2, type: 2}
-  - {fileID: 11400000, guid: 27957980fa896c141bde576d00a54691, type: 2}
-  - {fileID: 11400000, guid: 4630cb3a5b6f7cf4e99706da22a7f943, type: 2}
-  - {fileID: 11400000, guid: a25d5add34c361d439aa55b262fe4854, type: 2}
-  - {fileID: 11400000, guid: 31e5bb76d530fdb45bab62d1fdd646af, type: 2}
-  - {fileID: 11400000, guid: 81f9fdb8cc9244848b328767c6581482, type: 2}
-  - {fileID: 11400000, guid: b17b37a67ccdd3d40a505b1ebbbcb773, type: 2}
-  - {fileID: 11400000, guid: 18f2fef5088c8ce4ea93fa2f45377c03, type: 2}
-  - {fileID: 11400000, guid: ee3070331f492a54498828a766c29938, type: 2}
-  - {fileID: 11400000, guid: 9c37e2e296e19fe4694df672cb60c5e9, type: 2}
-  - {fileID: 11400000, guid: aac0d8029991a3340af88f0dd37630f9, type: 2}
-  - {fileID: 11400000, guid: 684661b9388707a4ba5bb3690b28c639, type: 2}
-  - {fileID: 11400000, guid: b0a94bc0923ba2f42a707a04cdbd72ac, type: 2}
-  - {fileID: 11400000, guid: f7b086f4b9756f745a460ae33fa12682, type: 2}
-  - {fileID: 11400000, guid: 6284224bfc09587408ace0447f413b4a, type: 2}
-  - {fileID: 11400000, guid: 7475a0c02f48c21488e0d335872976a3, type: 2}
-  - {fileID: 11400000, guid: 48a3fd8cd3ac468438d24414f14b1709, type: 2}
-  - {fileID: 11400000, guid: 4e3fb9f0065859448a94ec7d3d1be32b, type: 2}
-  - {fileID: 11400000, guid: a900a238a54cd154eb50571f4ffa012b, type: 2}
-  - {fileID: 11400000, guid: 41f7ee742bd119640bc30a3052800e47, type: 2}
-  - {fileID: 11400000, guid: 340cb3f5efe54c546b980933042956a8, type: 2}
-  - {fileID: 11400000, guid: 0b2ff222ea8b41e46b57986aa3f8c824, type: 2}
-  - {fileID: 11400000, guid: 6f822374e91411a4daddcd1627109b7d, type: 2}
-  - {fileID: 11400000, guid: cb9df14fca4bd8247b8b20ef0bbb456c, type: 2}
-  - {fileID: 11400000, guid: f66ac80e86e56cf43a460f35b0217a9a, type: 2}
-  - {fileID: 11400000, guid: 23f28be81f227404a90525bbf5928483, type: 2}
-  - {fileID: 11400000, guid: b2ba180205c8b574fa17ff7e5d6824bd, type: 2}
-  - {fileID: 11400000, guid: 7541a01839b33084cbfdb72bacab088a, type: 2}
-  namesList:
-  - Null Person
-  - Test McTestFace
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  - sinId: 0
+    description: REPLACE ME
+    hellCircle: 0
+  firstNamesList: []
+  lastNamesList: []
   spritesList:
   - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  keySinnerList:
+  - sinnerName: Arrrnold Pirate
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: Ruthlessly slaughtered hundreds for the last copy of Friends Life
+      hellCircle: 7
+    - sinId: 0
+      description: Plundered and pillaged innocents
+      hellCircle: 4
+    - sinId: 0
+      description: Likes freshly squeezed orange juice
+      hellCircle: 1
+    - sinId: 0
+      description: Has a pet parrot
+      hellCircle: 1
+    - sinId: 0
+      description: "He doesn\u2019t want to talk like this but he has a speech impediment"
+      hellCircle: 1
+  - sinnerName: Bob Dave
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: President of CDGV
+      hellCircle: 1
+    - sinId: 0
+      description: Likes Viet coffee
+      hellCircle: 1
+    - sinId: 0
+      description: Buff Gym Guy
+      hellCircle: 1
+    - sinId: 0
+      description: Fengshui Warrior
+      hellCircle: 1
+  - sinnerName: Tom Stream
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: Is a Gemini
+      hellCircle: 1
+    - sinId: 0
+      description: Cheated on girlfriend
+      hellCircle: 2
+    - sinId: 0
+      description: Has 3M+ Shake followers
+      hellCircle: 1
+    - sinId: 0
+      description: Low XP bar
+      hellCircle: 2
+  - sinnerName: Rordon Gamsay
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: Professional Chef
+      hellCircle: 1
+    - sinId: 0
+      description: Threw towels at chefs
+      hellCircle: 5
+    - sinId: 0
+      description: Wasted food
+      hellCircle: 3
+    - sinId: 0
+      description: Referred to people as donkeys
+      hellCircle: 5
+  - sinnerName: DMV Steve
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: Worked at the DMV
+      hellCircle: 1
+    - sinId: 0
+      description: Likes the DMV
+      hellCircle: 1
+    - sinId: 0
+      description: Fired from the DMV
+      hellCircle: 1
+    - sinId: 0
+      description: Stole from the DMV
+      hellCircle: 4
+  - sinnerName: John CDGV
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: Game Dev
+      hellCircle: 1
+    - sinId: 0
+      description: BETRAYED CDGV
+      hellCircle: 9
+    - sinId: 0
+      description: Killed Doug
+      hellCircle: 7
+    - sinId: 0
+      description: Destroyed CDGV Arcade Machine
+      hellCircle: 7
+  - sinnerName: Kat Fisching
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: Sold bathwater
+      hellCircle: 2
+    - sinId: 0
+      description: Used AI modified pictures on Hinder
+      hellCircle: 8
+    - sinId: 0
+      description: Lied about his gender to become a sugar baby
+      hellCircle: 8
+    - sinId: 0
+      description: "Actually a 45-year old man living in his mom\u2019s basement"
+      hellCircle: 3
+  - sinnerName: Sir Hamm
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: Is a hamster
+      hellCircle: 1
+    - sinId: 0
+      description: "Ate another country\u2019s food supply"
+      hellCircle: 3
+    - sinId: 0
+      description: Drank the Nile River
+      hellCircle: 3
+    - sinId: 0
+      description: Likes to run on his wheel
+      hellCircle: 1
+    - sinId: 0
+      description: Mastered meditation and learned to levitate
+      hellCircle: 1
+  - sinnerName: Virtuvious IX
+    sprite: {fileID: 0}
+    sins:
+    - sinId: 0
+      description: Owns eighteen identical togas
+      hellCircle: 1
+    - sinId: 0
+      description: "Ran a conspiracy theory podcast called \u201C2 Tin 2 Foil\u201D"
+      hellCircle: 6
+    - sinId: 0
+      description: "That\u2019s not his real name, he\u2019s a LARPer"
+      hellCircle: 6
+    - sinId: 0
+      description: Has a surprisingly robust morning routine
+      hellCircle: 1
+    - sinId: 0
+      description: Collects Finku Pops and Hello Catty merchandise
+      hellCircle: 1
   maxSins: 4
   currentSinner: {fileID: 0}

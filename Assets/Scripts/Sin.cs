@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Sin", menuName = "Sin")]
-public class Sin : ScriptableObject
+[System.Serializable]
+public class Sin
 {
     public int sinId;
     [TextArea] public string description = "REPLACE ME";

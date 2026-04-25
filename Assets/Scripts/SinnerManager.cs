@@ -16,14 +16,19 @@ public class SinnerManager : MonoBehaviour
 
     [Header("Data")]
     public List<Sin> sinsList = new();
-    public List<string> namesList = new();
+    public List<string> firstNamesList = new();
+    public List<string> lastNamesList = new();
     public List<Sprite> spritesList = new();
+    public List<SinnerData> keySinnerList = new();
 
     [Header("Parameters")]
     public int maxSins = 4;
 
     [Header("State")]
     public Sinner currentSinner = null;
+    public Queue<SinnerData> sinnerQueue = new();
+
+    private const int SINNER_QUEUE_LENGTH = 9;
 
     private void Awake()
     {
@@ -31,14 +36,54 @@ public class SinnerManager : MonoBehaviour
         else instance = this;
     }
 
+    private void Start()
+    {
+        var (firstNames, lastNames) = Importer.LoadNames();
+        firstNamesList = firstNames;
+        lastNamesList = lastNames;
+        sinsList = Importer.LoadSins();
+
+        for (int i = 0; i < SINNER_QUEUE_LENGTH; ++i)
+        {
+            AddSinnerToQueue(i == 1 || i == 6);
+        }
+
+        SinnerCard.instance.Close();
+
+        NextSinner();
+    }
+
+    public void AddSinnerToQueue(bool isKeySinner = false)
+    {
+        SinnerData data = isKeySinner
+            ? GetKeySinnerData()
+            : GetRandomlyGeneratedSinnerData();
+        sinnerQueue.Enqueue(data);
+    }
+
     [ContextMenu("Next Sinner")]
     public void NextSinner()
     {
         Assert.IsTrue(currentSinner == null);
 
+        SinnerData data = sinnerQueue.Dequeue(); 
+
+        Sinner sinner = Instantiate(sinnerPrefab, sinnerSpawnPoint.position, Quaternion.identity, canvas.transform);
+        sinner.data = data;
+        sinner.image.sprite = data.sprite;
+
+        currentSinner = sinner;
+
+        SinnerCard.instance.Open(data.sinnerName, data.sins);
+    }
+
+    public SinnerData GetRandomlyGeneratedSinnerData()
+    {
         SinnerData data = new()
         {
-            name = Utils.GetRandomItemInList(namesList),
+            sinnerName = Utils.GetRandomItemInList(firstNamesList)
+                + " "
+                + Utils.GetRandomItemInList(lastNamesList),
             sprite = Utils.GetRandomItemInList(spritesList)
         };
         for (int i = 0; i < maxSins; ++i)
@@ -50,23 +95,22 @@ public class SinnerManager : MonoBehaviour
             }
             data.sins.Add(sin);
         }
+        return data;
+    }
 
-        Sinner sinner = Instantiate(sinnerPrefab, sinnerSpawnPoint.position, Quaternion.identity, canvas.transform);
-        sinner.data = data;
-
-        currentSinner = sinner;
-
-        Debug.Log($"{data.name}:");
-        foreach (var sin in data.sins)
-        {
-            Debug.Log($"{Enum.GetName(typeof(HellCircle), sin.hellCircle)}: {sin.description}");
-        }
+    public SinnerData GetKeySinnerData()
+    {
+        return Utils.GetRandomItemInList(keySinnerList);
     }
 
     [ContextMenu("Send Current Sinner Away")]
     public void SendSinnerAway()
     {
-        Destroy(currentSinner);
+        SinnerCard.instance.Close();
+        Destroy(currentSinner.gameObject);
         currentSinner = null;
+        AddSinnerToQueue(false);
+
+        NextSinner();
     }
 }

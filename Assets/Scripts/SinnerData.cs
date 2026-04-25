@@ -17,7 +17,7 @@ public enum HellCircle {
 [System.Serializable]
 public class SinnerData
 {
-    public string name;
+    public string sinnerName;
     public Sprite sprite;
     public List<Sin> sins = new();
 }

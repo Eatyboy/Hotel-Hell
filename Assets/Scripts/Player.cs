@@ -232,6 +232,6 @@ public class Player : MonoBehaviour
         hp--;
         satan.SetSatanLevel(maxHp - hp);
         AudioManager.instance.PlayOneShot(AudioManager.instance.satanLaugh);
-        if (hp <= 0) GameManager.instance.GameOver();
+        if (hp < 0) GameManager.instance.GameOver();
     }
 }

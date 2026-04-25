@@ -71,8 +71,6 @@ public class SinnerManager : MonoBehaviour
             AddSinnerToQueue();
         }
 
-        SinnerCard.instance.Close();
-
         StartCoroutine(NextSinner());
 
         AudioManager.instance.PlayMusic(AudioManager.instance.mainTheme);
@@ -151,7 +149,7 @@ public class SinnerManager : MonoBehaviour
         currentSinner.image.color = opaqueColor;
         currentSinner.transform.position = sinnerStayPoint.position;
 
-        SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
+        yield return SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
 
         isPlayerProcessingSinner = true;
     }
@@ -200,7 +198,7 @@ public class SinnerManager : MonoBehaviour
     {
         isPlayerProcessingSinner = false;
 
-        SinnerCard.instance.Close();
+        StartCoroutine(SinnerCard.instance.Close());
 
         elevator.OpenElevator();
         yield return new WaitUntil(() => elevator.isOpened);

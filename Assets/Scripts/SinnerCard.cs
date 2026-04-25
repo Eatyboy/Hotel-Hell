@@ -23,7 +23,7 @@ public class SinnerCard : MonoBehaviour
     public float talkingDurationMultiplier = 0.1f;
     public float openDuration = 0.3f;
     public float closeDuration = 0.3f;
-    public float closeRotationSpeed = 1.0f;
+    public float closeRotationSpeed = 20.0f;
 
     private EventInstance talkingEventInstance;
 
@@ -38,27 +38,11 @@ public class SinnerCard : MonoBehaviour
 
     public IEnumerator Open(string sinnerName, string sinnerDialogue, List<Sin> sins)
     {
-        transform.rotation = Quaternion.identity;
-        cardCanvasGroup.alpha = 1.0f;
-        float elapsedTime = 0.0f;
-        while (elapsedTime < openDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / openDuration;
-            t = Utils.ExpEaseOut(t);
-
-            transform.position = Vector3.Lerp(startPosition.position, stayPosition.position, t);
-            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
-
-            yield return null;
-        }
-        transform.position = stayPosition.position;
-        transform.localScale = Vector3.one;
+        sinnerCardObject.SetActive(true);
 
         sinnerDialoguer.transform.parent.gameObject.SetActive(true);
         sinnerNameTMP.text = sinnerName;
         sinnerDialoguer.text = sinnerDialogue;
-        StartCoroutine(Talk(talkingDurationMultiplier * sinnerDialogue.Length));
         StringBuilder sb = new();
         foreach (var sin in sins)
         {
@@ -68,7 +52,23 @@ public class SinnerCard : MonoBehaviour
         }
         sinnerDescriptionTMP.text = sb.ToString();
 
-        sinnerCardObject.SetActive(true);
+        sinnerCardObject.transform.rotation = Quaternion.identity;
+        cardCanvasGroup.alpha = 1.0f;
+        float elapsedTime = 0.0f;
+        while (elapsedTime < openDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / openDuration;
+            t = Utils.ExpEaseOut(t);
+
+            sinnerCardObject.transform.position = Vector3.Lerp(startPosition.position, stayPosition.position, t);
+            sinnerCardObject.transform.localScale = Vector3.Lerp(Vector3.one * 0.3f, Vector3.one, t);
+
+            yield return null;
+        }
+        sinnerCardObject.transform.position = stayPosition.position;
+        sinnerCardObject.transform.localScale = Vector3.one;
+        StartCoroutine(Talk(talkingDurationMultiplier * sinnerDialogue.Length));
 
         AudioManager.instance.PlayOneShot(AudioManager.instance.paper);
     }
@@ -82,15 +82,15 @@ public class SinnerCard : MonoBehaviour
             float t = elapsedTime / openDuration;
             t = Utils.ExpEaseOut(t);
 
-            transform.position = Vector3.Lerp(stayPosition.position, exitPosition.position, t);
-            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
-            transform.rotation = Quaternion.AngleAxis(elapsedTime * closeRotationSpeed, Vector3.forward);
+            sinnerCardObject.transform.position = Vector3.Lerp(stayPosition.position, exitPosition.position, t);
+            sinnerCardObject.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+            sinnerCardObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -elapsedTime * closeRotationSpeed * Mathf.Rad2Deg);
             cardCanvasGroup.alpha = Mathf.Lerp(1.0f, 0.0f, t);
 
             yield return null;
         }
-        transform.position = exitPosition.position;
-        transform.localScale = Vector3.zero;
+        sinnerCardObject.transform.position = exitPosition.position;
+        sinnerCardObject.transform.localScale = Vector3.zero;
         cardCanvasGroup.alpha = 0.0f;
 
         sinnerDialoguer.transform.parent.gameObject.SetActive(false);

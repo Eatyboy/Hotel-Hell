@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c8ef8f74-5f1d-4cad-8d76-0b77980439b4}">
+		<property name="assetPath">
+			<value>SFX/Elevator Button.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.78986394557823125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cb599822-b751-4c6f-9cef-7f51a85729fd}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{778bd932-ca83-4440-81d3-4c62353c85ee}">
+		<property name="assetPath">
+			<value>SFX/Satan Laugh.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.9673469387755103</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cb599822-b751-4c6f-9cef-7f51a85729fd}</destination>
+		</relationship>
+	</object>
+</objects>

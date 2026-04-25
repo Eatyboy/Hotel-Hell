@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{080e0088-0103-40d8-a35f-ecf629b1ac07}">
+		<property name="assetPath">
+			<value>SFX/Talking.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.069501133786848079</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cb599822-b751-4c6f-9cef-7f51a85729fd}</destination>
+		</relationship>
+	</object>
+</objects>

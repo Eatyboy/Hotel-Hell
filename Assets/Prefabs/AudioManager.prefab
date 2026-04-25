@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &801858294481552702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8811768277085776263}
+  - component: {fileID: 128850606394797344}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8811768277085776263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801858294481552702}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128850606394797344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801858294481552702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4c4006e54493742970f20b0823c91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  mainTheme:
+    Guid:
+      Data1: -1437414834
+      Data2: 1120278247
+      Data3: 1506210466
+      Data4: -1137941648
+    Path: event:/Music/MainTheme
+  elevatorOpen:
+    Guid:
+      Data1: 204644773
+      Data2: 1152012288
+      Data3: 1621617822
+      Data4: 566647708
+    Path: event:/SFX/ElevatorOpen
+  elevatorClose:
+    Guid:
+      Data1: -518560008
+      Data2: 1165409479
+      Data3: -760655986
+      Data4: -736001308
+    Path: event:/SFX/ElevatorClose
+  elevatorButton:
+    Guid:
+      Data1: -21796510
+      Data2: 1108613440
+      Data3: 1847709873
+      Data4: 1888035260
+    Path: event:/SFX/ElevatorButton
+  elevatorDing:
+    Guid:
+      Data1: -80678380
+      Data2: 1305848459
+      Data3: -918329208
+      Data4: 1238452719
+    Path: event:/SFX/ElevatorDing
+  satanLaugh:
+    Guid:
+      Data1: -1358209812
+      Data2: 1166885519
+      Data3: 968701860
+      Data4: 1217725644
+    Path: event:/SFX/SatanLaugh
+  paper:
+    Guid:
+      Data1: -1855683847
+      Data2: 1199360486
+      Data3: 1008945544
+      Data4: -1702478352
+    Path: event:/SFX/Paper
+  talking:
+    Guid:
+      Data1: -81954247
+      Data2: 1101075751
+      Data3: -1168931670
+      Data4: -1241696051
+    Path: event:/SFX/Talking
+  areBussesInitialized: 0

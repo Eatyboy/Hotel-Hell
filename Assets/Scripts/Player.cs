@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Satan satan;
     [SerializeField] private Image mc;
+    [SerializeField] private TextMeshProUGUI mcNumberTMP;
     [SerializeField] private Sprite mcDefault;
     [SerializeField] private Sprite mcHoldUp;
 
@@ -30,6 +32,9 @@ public class Player : MonoBehaviour
         else instance = this;
 
         ctrl = new();
+
+        mcNumberTMP.gameObject.SetActive(false);
+        mc.sprite = mcDefault;
     }
 
     private void Start()
@@ -142,9 +147,16 @@ public class Player : MonoBehaviour
             if (sin.hellCircle > greatestSin) greatestSin = sin.hellCircle;
         }
 
+        mc.sprite = mcHoldUp;
+        mcNumberTMP.text = ((int)floor).ToString();
+        mcNumberTMP.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(playerHoldUpSignDuration);
 
-        mc.sprite = mcHoldUp;
+        yield return SinnerManager.instance.SendSinnerAway();
+
+        mcNumberTMP.gameObject.SetActive(false);
+        mc.sprite = mcDefault;
 
         if (greatestSin == floor)
         {
@@ -154,10 +166,6 @@ public class Player : MonoBehaviour
         {
             LoseHP();
         }
-
-        yield return SinnerManager.instance.SendSinnerAway();
-
-        mc.sprite = mcDefault;
     }
 
     public void LoseHP()

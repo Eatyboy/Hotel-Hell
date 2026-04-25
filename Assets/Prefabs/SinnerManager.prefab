@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SinnerManager
   sinnerPrefab: {fileID: 298969775203823597, guid: 44912aa1f0614a14eb4f20938080d2df, type: 3}
   sinnerSpawnPoint: {fileID: 0}
-  canvas: {fileID: 0}
+  sinnerExitPoint: {fileID: 0}
+  sinnerParent: {fileID: 0}
+  elevator: {fileID: 0}
   sinsList:
   - sinId: 0
     description: REPLACE ME
@@ -302,12 +304,25 @@ MonoBehaviour:
     hellCircle: 0
   firstNamesList: []
   lastNamesList: []
+  dialogueList: []
   spritesList:
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: f6fb631718617c24883383701e142ef2, type: 3}
+  - {fileID: 21300000, guid: 4e3e0ac37438fec47aee254254e0e8a7, type: 3}
+  - {fileID: 21300000, guid: 868c0a5689357de45ac280665c5187f3, type: 3}
+  - {fileID: 21300000, guid: 1405cab21d1efc442960a148beabb702, type: 3}
+  - {fileID: 21300000, guid: 1ac30d84c48a9e04fa1cf613e10c749a, type: 3}
+  - {fileID: 21300000, guid: 50d021f83d02c0e419086ef6c4db88e3, type: 3}
+  - {fileID: 21300000, guid: c9ecef8c1e4d5d34f9151c4ba343eb95, type: 3}
+  - {fileID: 21300000, guid: 4e3562112327a604fa9054db59f0eebc, type: 3}
+  - {fileID: 21300000, guid: 1327012509cb0dd4db544724d63a0c96, type: 3}
+  - {fileID: 21300000, guid: 6912c5ab731696b4f940622d508f5afa, type: 3}
+  - {fileID: 21300000, guid: 152c2c4f0cef53d4e908c5bae6e145ee, type: 3}
+  - {fileID: 21300000, guid: 152c2c4f0cef53d4e908c5bae6e145ee, type: 3}
+  - {fileID: 21300000, guid: 0b3ead7347b4abc44af2e3281ffb3b7d, type: 3}
   keySinnerList:
   - sinnerName: Arrrnold Pirate
     sprite: {fileID: 21300000, guid: eb8390dc1fe124746bb5030bcae927af, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: Ruthlessly slaughtered hundreds for the last copy of Friends Life
@@ -326,6 +341,7 @@ MonoBehaviour:
       hellCircle: 1
   - sinnerName: Bob Dave
     sprite: {fileID: 21300000, guid: f27ea308ed504eb4eabd523ff4ddf00b, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: President of CDGV
@@ -341,6 +357,7 @@ MonoBehaviour:
       hellCircle: 1
   - sinnerName: Tom Stream
     sprite: {fileID: 21300000, guid: 057d03be7aadaee45a440d0beb68061c, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: Is a Gemini
@@ -356,6 +373,7 @@ MonoBehaviour:
       hellCircle: 2
   - sinnerName: Rordon Gamsay
     sprite: {fileID: 21300000, guid: 69132123a5d80fb45b4778a9d7740eec, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: Professional Chef
@@ -371,6 +389,7 @@ MonoBehaviour:
       hellCircle: 5
   - sinnerName: DMV Steve
     sprite: {fileID: 21300000, guid: 65850b091cdc0d843ae0380d9b80ac68, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: Worked at the DMV
@@ -386,6 +405,7 @@ MonoBehaviour:
       hellCircle: 4
   - sinnerName: John CDGV
     sprite: {fileID: 21300000, guid: c645ab7c1d05ffe4e88f05f67ea863c1, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: Game Dev
@@ -401,6 +421,7 @@ MonoBehaviour:
       hellCircle: 7
   - sinnerName: Kat Fisching
     sprite: {fileID: 21300000, guid: 5bfc640561c33424d892d504a17b0873, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: Sold bathwater
@@ -416,6 +437,7 @@ MonoBehaviour:
       hellCircle: 3
   - sinnerName: Sir Hamm
     sprite: {fileID: 21300000, guid: c6a8ca9b0ee4a1440abeeb833c753ecc, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: Is a hamster
@@ -434,6 +456,7 @@ MonoBehaviour:
       hellCircle: 1
   - sinnerName: Virtuvious IX
     sprite: {fileID: 21300000, guid: 3cd9575f35b172046941dfab486d5412, type: 3}
+    sinnerDialogue: 
     sins:
     - sinId: 0
       description: Owns eighteen identical togas
@@ -450,5 +473,11 @@ MonoBehaviour:
     - sinId: 0
       description: Collects Finku Pops and Hello Catty merchandise
       hellCircle: 1
+  minSins: 3
   maxSins: 4
+  maxInspectionTimeSeconds: 30
+  keyNPCRate: 9
+  sinnerExitDuration: 1.2
   currentSinner: {fileID: 0}
+  sinnersProcessed: 0
+  inspectionTimeSecondsRemaining: 0

@@ -6,18 +6,30 @@ using UnityEngine;
 
 public class SinnerManager : MonoBehaviour
 {
+    public static SinnerManager instance;
+
     public List<WeightedItem<Sin>> sinsList = new();
     public List<WeightedItem<string>> namesList = new();
     public List<WeightedItem<Sprite>> spritesList = new();
 
     public int maxSins = 4;
-    [SerializeField] private Sinner sinnerPrefab; 
+    [SerializeField] private Sinner sinnerPrefab;
 
-    public Sinner GenerateSinner()
+    public Sinner currentSinner = null;
+
+    private void Awake()
     {
-        SinnerData data = new SinnerData();
-        data.name = Utils.GetRandomWeightedItem(namesList);
-        data.sprite = Utils.GetRandomWeightedItem(spritesList);
+        if (instance != null && instance != this) Destroy(gameObject);
+        else instance = this;
+    }
+
+    public void NextSinner()
+    {
+        SinnerData data = new()
+        {
+            name = Utils.GetRandomWeightedItem(namesList),
+            sprite = Utils.GetRandomWeightedItem(spritesList)
+        };
         for (int i = 0; i < maxSins; ++i)
         {
             Sin sin = Utils.GetRandomWeightedItem(sinsList);
@@ -31,6 +43,12 @@ public class SinnerManager : MonoBehaviour
         Sinner sinner = Instantiate(sinnerPrefab);
         sinner.data = data;
 
-        return sinner;
+        currentSinner = sinner;
+
+        Debug.Log($"{data.name}:");
+        foreach (var sin in data.sins)
+        {
+            Debug.Log($"{Enum.GetName(typeof(HellCircle), sin.hellCircle)}: {sin.description}");
+        }
     }
 }

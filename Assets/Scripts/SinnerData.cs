@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum HellCircle {
+    None,
     Limbo,
     Lust,
     Gluttony,
@@ -13,6 +14,7 @@ public enum HellCircle {
     Treachery,
 }
 
+[CreateAssetMenu(fileName = "New Sin", menuName = "Sin")]
 public class Sin : ScriptableObject
 {
     public int sinId;

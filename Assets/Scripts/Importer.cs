@@ -10,6 +10,8 @@ public class Importer
 {
     private static readonly string sinsTextPath = Application.dataPath + "/TextData/sins.txt";
     private static readonly string namesTextPath = Application.dataPath + "/TextData/names.txt";
+    private static readonly string dialogueTextPath = Application.dataPath + "/TextData/dialogue.txt";
+
 
     public static List<Sin> LoadSins()
     {
@@ -107,5 +109,27 @@ public class Importer
         }
 
         return (firstNamesList, lastNamesList);
+    }
+
+    public static List<string> LoadDialogue() {
+        if (string.IsNullOrEmpty(dialogueTextPath))
+        {
+            Debug.LogWarning("Invalid names file path");
+            return null;
+        }
+
+        using StreamReader sr = new(dialogueTextPath);
+        string line;
+
+        List<string> dialogues = new();
+
+        while ((line = sr.ReadLine()) != null)
+        {
+            string newDialogue = line.Trim();
+            dialogues.Add(line);
+        }
+
+        return dialogues;
+
     }
 }

@@ -43,52 +43,51 @@ public class Player : MonoBehaviour
 
     private void Zero(InputAction.CallbackContext ctx)
     {
-
     }
 
     private void One(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Limbo);
     }
 
     private void Two(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Lust);
     }
 
     private void Three(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Gluttony);
     }
 
     private void Four(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Greed);
     }
 
     private void Five(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Anger);
     }
 
     private void Six(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Heresy);
     }
 
     private void Seven(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Violence);
     }
 
     private void Eight(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Fraud);
     }
 
     private void Nine(InputAction.CallbackContext ctx)
     {
-
+        SendToFloor(HellCircle.Treachery);
     }
 
     public void SendToFloor(HellCircle floor)
@@ -106,5 +105,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Wrong!");
         }
+
+        SinnerManager.instance.SendSinnerAway();
     }
 }

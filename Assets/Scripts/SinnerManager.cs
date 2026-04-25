@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -12,7 +13,9 @@ public class SinnerManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private Sinner sinnerPrefab;
     [SerializeField] private Transform sinnerSpawnPoint;
+    [SerializeField] private Transform sinnerExitPoint;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private Elevator elevator;
 
     [Header("Data")]
     public List<Sin> sinsList = new();
@@ -29,6 +32,7 @@ public class SinnerManager : MonoBehaviour
     public int maxSins = 5;
     public float maxInspectionTimeSeconds = 30.0f;
     public int keyNPCRate = 9;
+    public float sinnerExitDuration = 0.5f;
 
     [Header("State")]
     public Sinner currentSinner = null;
@@ -74,7 +78,7 @@ public class SinnerManager : MonoBehaviour
 
             if (inspectionTimeSecondsRemaining < 0.0f)
             {
-                SendSinnerAway();
+                StartCoroutine(SendSinnerAway());
                 Player.instance.LoseHP();
             }
         }
@@ -145,9 +149,40 @@ public class SinnerManager : MonoBehaviour
     }
 
     [ContextMenu("Send Current Sinner Away")]
-    public void SendSinnerAway()
+    public IEnumerator SendSinnerAway()
     {
         SinnerCard.instance.Close();
+
+        elevator.OpenElevator();
+        yield return new WaitUntil(() => elevator.isOpened);
+
+        Color opaqueColor = new(
+            currentSinner.image.color.r,
+            currentSinner.image.color.g,
+            currentSinner.image.color.b,
+            1.0f
+            );
+        Color transparentColor = new(
+            currentSinner.image.color.r,
+            currentSinner.image.color.g,
+            currentSinner.image.color.b,
+            1.0f
+            );
+
+        float elapsedTime = 0.0f;
+        while (elapsedTime < sinnerExitDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / sinnerExitDuration;
+            t = t == 1.0f ? 1.0f : 1.0f - Mathf.Pow(2.0f, -10.0f * t);
+
+            currentSinner.transform.position = Vector3.Lerp(sinnerSpawnPoint.position, sinnerExitPoint.position, t);
+            currentSinner.image.color = Color.Lerp(opaqueColor, transparentColor, t);
+        }
+
+        elevator.CloseElevator();
+        yield return new WaitUntil(() => !elevator.isOpened);
+
         Destroy(currentSinner.gameObject);
         currentSinner = null;
         AddSinnerToQueue();

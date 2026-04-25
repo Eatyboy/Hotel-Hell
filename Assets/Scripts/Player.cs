@@ -1,16 +1,24 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("References")]
     public static Player instance;
     private InputSystem_Actions ctrl;
     [SerializeField] private Satan satan;
     [SerializeField] private Image mc;
+    [SerializeField] private Sprite mcDefault;
+    [SerializeField] private Sprite mcHoldUp;
 
+    [Header("Parameters")]
     public int maxHp = 3;
+    public float playerHoldUpSignDuration = 0.5f;
+
+    [Header("State")]
     public int hp = 3;
     public int souls = 0;
 
@@ -63,68 +71,71 @@ public class Player : MonoBehaviour
 
     private void One(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Limbo);
+        StartCoroutine(SendToFloor(HellCircle.Limbo));
     }
 
     private void Two(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Lust);
+        StartCoroutine(SendToFloor(HellCircle.Lust));
     }
 
     private void Three(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Gluttony);
+        StartCoroutine(SendToFloor(HellCircle.Gluttony));
     }
 
     private void Four(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Greed);
+        StartCoroutine(SendToFloor(HellCircle.Greed));
     }
 
     private void Five(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Anger);
+        StartCoroutine(SendToFloor(HellCircle.Anger));
     }
 
     private void Six(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Heresy);
+        StartCoroutine(SendToFloor(HellCircle.Heresy));
     }
 
     private void Seven(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Violence);
+        StartCoroutine(SendToFloor(HellCircle.Violence));
     }
 
     private void Eight(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Fraud);
+        StartCoroutine(SendToFloor(HellCircle.Fraud));
     }
 
     private void Nine(InputAction.CallbackContext ctx)
     {
-        SendToFloor(HellCircle.Treachery);
+        StartCoroutine(SendToFloor(HellCircle.Treachery));
     }
 
-    public void SendToFloor(HellCircle floor)
+    public IEnumerator SendToFloor(HellCircle floor)
     {
         HellCircle greatestSin = HellCircle.None; 
         foreach (var sin in SinnerManager.instance.currentSinner.data.sins)
         {
             if (sin.hellCircle > greatestSin) greatestSin = sin.hellCircle;
         }
+
+        yield return new WaitForSeconds(playerHoldUpSignDuration);
+
+        mc.sprite = mcHoldUp;
+
         if (greatestSin == floor)
         {
-            Debug.Log("Correct!");
             souls++;
         }
         else
         {
-            Debug.Log("Wrong!");
             LoseHP();
         }
 
-        SinnerManager.instance.SendSinnerAway();
+        yield return SinnerManager.instance.SendSinnerAway();
     }
 
     public void LoseHP()

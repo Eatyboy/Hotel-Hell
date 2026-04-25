@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ElevatorOpen
+  m_Name: ElevatorOpenIdle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,18 +21,8 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 7eb35ff16dda62b4ca2978bd179fd370, type: 3}
+      value: {fileID: 21300000, guid: a16ff2e306e0f104fb8f6e40f31cc4d3, type: 3}
     - time: 0.14285715
-      value: {fileID: 21300000, guid: 2e6c1de10fad737499deadb8fe93f3af, type: 3}
-    - time: 0.2857143
-      value: {fileID: 21300000, guid: 70f0f7731443b2c44b45d8e452925449, type: 3}
-    - time: 0.42857143
-      value: {fileID: 21300000, guid: 05284a60da89b3140ac34bf2df5f374e, type: 3}
-    - time: 0.5714286
-      value: {fileID: 21300000, guid: ab5fafa0e016b56488c90955f98bb39f, type: 3}
-    - time: 0.71428573
-      value: {fileID: 21300000, guid: 539ec4af386471647a45ad555b8b9083, type: 3}
-    - time: 0.85714287
       value: {fileID: 21300000, guid: d355bd8b57736b440a74be818e256bf6, type: 3}
     attribute: m_Sprite
     path: 
@@ -56,19 +46,14 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 7eb35ff16dda62b4ca2978bd179fd370, type: 3}
-    - {fileID: 21300000, guid: 2e6c1de10fad737499deadb8fe93f3af, type: 3}
-    - {fileID: 21300000, guid: 70f0f7731443b2c44b45d8e452925449, type: 3}
-    - {fileID: 21300000, guid: 05284a60da89b3140ac34bf2df5f374e, type: 3}
-    - {fileID: 21300000, guid: ab5fafa0e016b56488c90955f98bb39f, type: 3}
-    - {fileID: 21300000, guid: 539ec4af386471647a45ad555b8b9083, type: 3}
+    - {fileID: 21300000, guid: a16ff2e306e0f104fb8f6e40f31cc4d3, type: 3}
     - {fileID: 21300000, guid: d355bd8b57736b440a74be818e256bf6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.2857143
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,11 +72,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 1
-    functionName: OnElevatorOpened
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

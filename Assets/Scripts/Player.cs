@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     private InputSystem_Actions ctrl;
     private bool paused = false;
 
-    public GameManager gameManager;
     [SerializeField] private Satan satan;
     [SerializeField] private Image mc;
     [SerializeField] private Sprite mcDefault;
@@ -73,11 +72,11 @@ public class Player : MonoBehaviour
         paused = !paused; 
         if (paused)
         {
-            gameManager.Pause();
+            GameManager.instance.Pause();
         }
         else
         {
-            gameManager.UnPause();
+            GameManager.instance.UnPause();
         }
     }
 
@@ -157,6 +156,8 @@ public class Player : MonoBehaviour
         }
 
         yield return SinnerManager.instance.SendSinnerAway();
+
+        mc.sprite = mcDefault;
     }
 
     public void LoseHP()

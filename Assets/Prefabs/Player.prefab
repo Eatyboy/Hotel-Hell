@@ -44,3 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a097eee63009924d9eca71c6dd62802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  gameManager: {fileID: 0}
+  satan: {fileID: 0}
+  mc: {fileID: 0}
+  mcDefault: {fileID: 21300000, guid: dc9580654d17f95449b43444922d9abe, type: 3}
+  mcHoldUp: {fileID: 21300000, guid: 20547f2fd9ab77c438f3e19153a69929, type: 3}
+  maxHp: 3
+  playerHoldUpSignDuration: 0.5
+  hp: 3
+  souls: 0

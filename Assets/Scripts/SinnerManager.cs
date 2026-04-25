@@ -166,7 +166,7 @@ public class SinnerManager : MonoBehaviour
             currentSinner.image.color.r,
             currentSinner.image.color.g,
             currentSinner.image.color.b,
-            1.0f
+            0.0f
             );
 
         float elapsedTime = 0.0f;
@@ -178,6 +178,8 @@ public class SinnerManager : MonoBehaviour
 
             currentSinner.transform.position = Vector3.Lerp(sinnerSpawnPoint.position, sinnerExitPoint.position, t);
             currentSinner.image.color = Color.Lerp(opaqueColor, transparentColor, t);
+
+            yield return null;
         }
 
         elevator.CloseElevator();

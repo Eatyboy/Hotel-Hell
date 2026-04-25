@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public static Player instance;
     private InputSystem_Actions ctrl;
     [SerializeField] private Satan satan;
+    [SerializeField] private Image mc;
 
     public int maxHp = 3;
     public int hp = 3;

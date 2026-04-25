@@ -4,11 +4,25 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
     private InputSystem_Actions ctrl;
+    [SerializeField] private Satan satan;
+
+    public int maxHp = 3;
+    public int hp = 3;
+    public int souls = 0;
 
     private void Awake()
     {
+        if (instance != null && instance != this) Destroy(gameObject);
+        else instance = this;
+
         ctrl = new();
+    }
+
+    private void Start()
+    {
+        hp = maxHp;
     }
 
     private void OnEnable()
@@ -100,12 +114,21 @@ public class Player : MonoBehaviour
         if (greatestSin == floor)
         {
             Debug.Log("Correct!");
+            souls++;
         }
         else
         {
             Debug.Log("Wrong!");
+            LoseHP();
         }
 
         SinnerManager.instance.SendSinnerAway();
+    }
+
+    public void LoseHP()
+    {
+        hp--;
+        satan.SetSatanLevel(maxHp - hp);
+        if (hp <= 0) GameManager.instance.GameOver();
     }
 }

@@ -14,7 +14,7 @@ public class SinnerManager : MonoBehaviour
     [SerializeField] private Sinner sinnerPrefab;
     [SerializeField] private Transform sinnerSpawnPoint;
     [SerializeField] private Transform sinnerExitPoint;
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private Transform sinnerParent;
     [SerializeField] private Elevator elevator;
 
     [Header("Data")]
@@ -101,7 +101,7 @@ public class SinnerManager : MonoBehaviour
         SinnerData data = sinnerQueue.Dequeue();
         if (sinnersProcessed == 1) data.sinnerName = "Joe Lina";
 
-        Sinner sinner = Instantiate(sinnerPrefab, sinnerSpawnPoint.position, Quaternion.identity, canvas.transform);
+        Sinner sinner = Instantiate(sinnerPrefab, sinnerSpawnPoint.position, Quaternion.identity, sinnerParent);
         sinner.data = data;
         sinner.image.sprite = data.sprite;
 

@@ -68,6 +68,8 @@ public class SinnerManager : MonoBehaviour
         SinnerCard.instance.Close();
 
         StartCoroutine(NextSinner());
+
+        AudioManager.instance.PlayMusic(AudioManager.instance.mainTheme);
     }
 
     private void Update()
@@ -110,7 +112,6 @@ public class SinnerManager : MonoBehaviour
         currentSinner = sinner;
 
         inspectionTimeSecondsRemaining = maxInspectionTimeSeconds;
-        SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
 
         Color opaqueColor = new(
             currentSinner.image.color.r,
@@ -140,6 +141,8 @@ public class SinnerManager : MonoBehaviour
         }
         currentSinner.image.color = opaqueColor;
         currentSinner.transform.position = sinnerStayPoint.position;
+
+        SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
     }
 
     public SinnerData GetRandomlyGeneratedSinnerData()
@@ -224,7 +227,5 @@ public class SinnerManager : MonoBehaviour
         currentSinner = null;
         AddSinnerToQueue();
         sinnersProcessed++;
-
-        yield return NextSinner();
     }
 }

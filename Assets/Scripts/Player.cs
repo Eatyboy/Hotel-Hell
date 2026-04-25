@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     [Header("Parameters")]
     public int maxHp = 3;
     public float playerHoldUpSignDuration = 0.5f;
+    public float nextSinnerDelay = 1.0f;
 
     [Header("State")]
     public int hp = 3;
@@ -74,6 +75,8 @@ public class Player : MonoBehaviour
 
     private void Zero(InputAction.CallbackContext ctx)
     {
+        AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorButton);
+        
         paused = !paused; 
         if (paused)
         {
@@ -141,6 +144,8 @@ public class Player : MonoBehaviour
 
     public IEnumerator SendToFloor(HellCircle floor)
     {
+        AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorButton);
+
         HellCircle greatestSin = HellCircle.None; 
         foreach (var sin in SinnerManager.instance.currentSinner.data.sins)
         {
@@ -152,6 +157,8 @@ public class Player : MonoBehaviour
         mcNumberTMP.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(playerHoldUpSignDuration);
+
+        AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorDing);
 
         yield return SinnerManager.instance.SendSinnerAway();
 
@@ -166,12 +173,17 @@ public class Player : MonoBehaviour
         {
             LoseHP();
         }
+
+        yield return new WaitForSeconds(nextSinnerDelay);
+
+        yield return SinnerManager.instance.NextSinner();
     }
 
     public void LoseHP()
     {
         hp--;
         satan.SetSatanLevel(maxHp - hp);
+        AudioManager.instance.PlayOneShot(AudioManager.instance.satanLaugh);
         if (hp <= 0) GameManager.instance.GameOver();
     }
 }

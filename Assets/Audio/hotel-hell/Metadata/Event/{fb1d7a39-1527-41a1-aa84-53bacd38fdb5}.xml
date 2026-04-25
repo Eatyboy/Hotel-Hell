@@ -53,7 +53,7 @@
 			<destination>{53d87d57-22ca-412a-a6de-503aeebdc1ce}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{a3b2d2e2-463c-4e6a-adec-17e7ffd2d974}</destination>
+			<destination>{f1f95c2d-30c2-4a57-b11f-46bb2968f7d7}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{cf78e71a-8ebd-4d5a-aae2-990585fcd3a6}" />
@@ -113,7 +113,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{60d318af-0271-4001-99ae-3f98542171a4}">
 		<property name="volume">
-			<value>-5</value>
+			<value>4</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -224,6 +224,9 @@
 	<object class="ThreeEQEffect" id="{2bc88884-2854-45e9-92c4-f9b3eee8d08c}">
 		<property name="lowGain">
 			<value>-11</value>
+		</property>
+		<property name="midGain">
+			<value>1.5</value>
 		</property>
 		<property name="highGain">
 			<value>-8</value>

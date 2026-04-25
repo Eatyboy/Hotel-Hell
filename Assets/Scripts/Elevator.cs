@@ -8,11 +8,13 @@ public class Elevator : MonoBehaviour
     public void CloseElevator()
     {
         animator.SetTrigger("Close");
+        AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorClose);
     }
 
     public void OpenElevator()
     {
         animator.SetTrigger("Open");
+        AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorOpen);
     }
 
     public void OnElevatorOpened()

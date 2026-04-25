@@ -18,6 +18,7 @@ public class Elevator : MonoBehaviour
     public void OnElevatorOpened()
     {
         isOpened = true;
+        animator.SetTrigger("OpenIdle");
     }
 
     public void OnElevatorClosed()

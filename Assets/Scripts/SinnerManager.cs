@@ -13,6 +13,7 @@ public class SinnerManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private Sinner sinnerPrefab;
     [SerializeField] private Transform sinnerSpawnPoint;
+    [SerializeField] private Transform sinnerStayPoint;
     [SerializeField] private Transform sinnerExitPoint;
     [SerializeField] private Transform sinnerParent;
     [SerializeField] private Elevator elevator;
@@ -32,6 +33,7 @@ public class SinnerManager : MonoBehaviour
     public int maxSins = 5;
     public float maxInspectionTimeSeconds = 30.0f;
     public int keyNPCRate = 9;
+    public float sinnerEnterDuration = 0.5f;
     public float sinnerExitDuration = 0.5f;
 
     [Header("State")]
@@ -65,7 +67,7 @@ public class SinnerManager : MonoBehaviour
 
         SinnerCard.instance.Close();
 
-        NextSinner();
+        StartCoroutine(NextSinner());
     }
 
     private void Update()
@@ -86,7 +88,7 @@ public class SinnerManager : MonoBehaviour
 
     public void AddSinnerToQueue()
     {
-        bool isKeySinner = sinnersProcessed % 9 == 2 && unusedKeySinners.Count > 0;
+        bool isKeySinner = sinnersProcessed % 5 == 2 && unusedKeySinners.Count > 0;
         SinnerData data = isKeySinner
             ? GetKeySinnerData()
             : GetRandomlyGeneratedSinnerData();
@@ -94,7 +96,7 @@ public class SinnerManager : MonoBehaviour
     }
 
     [ContextMenu("Next Sinner")]
-    public void NextSinner()
+    public IEnumerator NextSinner()
     {
         Assert.IsTrue(currentSinner == null);
 
@@ -109,6 +111,35 @@ public class SinnerManager : MonoBehaviour
 
         inspectionTimeSecondsRemaining = maxInspectionTimeSeconds;
         SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
+
+        Color opaqueColor = new(
+            currentSinner.image.color.r,
+            currentSinner.image.color.g,
+            currentSinner.image.color.b,
+            1.0f
+            );
+        Color transparentColor = new(
+            currentSinner.image.color.r,
+            currentSinner.image.color.g,
+            currentSinner.image.color.b,
+            0.0f
+            );
+
+        currentSinner.image.color = opaqueColor;
+        float elapsedTime = 0.0f;
+        while (elapsedTime < sinnerEnterDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / sinnerEnterDuration;
+            t = t == 1.0f ? 1.0f : 1.0f - Mathf.Pow(2.0f, -10.0f * t);
+
+            currentSinner.transform.position = Vector3.Lerp(sinnerSpawnPoint.position, sinnerStayPoint.position, t);
+            currentSinner.image.color = Color.Lerp(transparentColor, opaqueColor, t);
+
+            yield return null;
+        }
+        currentSinner.image.color = opaqueColor;
+        currentSinner.transform.position = sinnerStayPoint.position;
     }
 
     public SinnerData GetRandomlyGeneratedSinnerData()
@@ -142,7 +173,9 @@ public class SinnerManager : MonoBehaviour
             return null;
         }
 
+        int bobDaveIndex = 1;
         int index = UnityEngine.Random.Range(0, unusedKeySinners.Count);
+        if (unusedKeySinners.Count == 8) index = bobDaveIndex;
         SinnerData data = unusedKeySinners[index];
         unusedKeySinners.RemoveAt(index);
         return data;
@@ -176,11 +209,13 @@ public class SinnerManager : MonoBehaviour
             float t = elapsedTime / sinnerExitDuration;
             t = t == 1.0f ? 1.0f : 1.0f - Mathf.Pow(2.0f, -10.0f * t);
 
-            currentSinner.transform.position = Vector3.Lerp(sinnerSpawnPoint.position, sinnerExitPoint.position, t);
+            currentSinner.transform.position = Vector3.Lerp(sinnerStayPoint.position, sinnerExitPoint.position, t);
             currentSinner.image.color = Color.Lerp(opaqueColor, transparentColor, t);
 
             yield return null;
         }
+        currentSinner.transform.position = sinnerExitPoint.position;
+        currentSinner.image.color = transparentColor;
 
         elevator.CloseElevator();
         yield return new WaitUntil(() => !elevator.isOpened);
@@ -190,6 +225,6 @@ public class SinnerManager : MonoBehaviour
         AddSinnerToQueue();
         sinnersProcessed++;
 
-        NextSinner();
+        yield return NextSinner();
     }
 }

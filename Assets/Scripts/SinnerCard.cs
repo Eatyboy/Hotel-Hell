@@ -20,6 +20,7 @@ public class SinnerCard : MonoBehaviour
 
     public void Open(string sinnerName, string sinnerDialogue, List<Sin> sins)
     {
+        sinnerDialoguer.transform.parent.gameObject.SetActive(true);
         sinnerNameTMP.text = sinnerName;
         sinnerDialoguer.text = sinnerDialogue;
         StringBuilder sb = new();
@@ -36,6 +37,7 @@ public class SinnerCard : MonoBehaviour
 
     public void Close()
     {
+        sinnerDialoguer.transform.parent.gameObject.SetActive(false);
         sinnerCardObject.SetActive(false);
     }
 }

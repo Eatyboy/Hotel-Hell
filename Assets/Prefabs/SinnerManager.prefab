@@ -307,7 +307,7 @@ MonoBehaviour:
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   keySinnerList:
   - sinnerName: Arrrnold Pirate
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: eb8390dc1fe124746bb5030bcae927af, type: 3}
     sins:
     - sinId: 0
       description: Ruthlessly slaughtered hundreds for the last copy of Friends Life
@@ -325,7 +325,7 @@ MonoBehaviour:
       description: "He doesn\u2019t want to talk like this but he has a speech impediment"
       hellCircle: 1
   - sinnerName: Bob Dave
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: f27ea308ed504eb4eabd523ff4ddf00b, type: 3}
     sins:
     - sinId: 0
       description: President of CDGV
@@ -340,7 +340,7 @@ MonoBehaviour:
       description: Fengshui Warrior
       hellCircle: 1
   - sinnerName: Tom Stream
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 057d03be7aadaee45a440d0beb68061c, type: 3}
     sins:
     - sinId: 0
       description: Is a Gemini
@@ -355,7 +355,7 @@ MonoBehaviour:
       description: Low XP bar
       hellCircle: 2
   - sinnerName: Rordon Gamsay
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 69132123a5d80fb45b4778a9d7740eec, type: 3}
     sins:
     - sinId: 0
       description: Professional Chef
@@ -370,7 +370,7 @@ MonoBehaviour:
       description: Referred to people as donkeys
       hellCircle: 5
   - sinnerName: DMV Steve
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 65850b091cdc0d843ae0380d9b80ac68, type: 3}
     sins:
     - sinId: 0
       description: Worked at the DMV
@@ -385,7 +385,7 @@ MonoBehaviour:
       description: Stole from the DMV
       hellCircle: 4
   - sinnerName: John CDGV
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: c645ab7c1d05ffe4e88f05f67ea863c1, type: 3}
     sins:
     - sinId: 0
       description: Game Dev
@@ -400,7 +400,7 @@ MonoBehaviour:
       description: Destroyed CDGV Arcade Machine
       hellCircle: 7
   - sinnerName: Kat Fisching
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 5bfc640561c33424d892d504a17b0873, type: 3}
     sins:
     - sinId: 0
       description: Sold bathwater
@@ -415,7 +415,7 @@ MonoBehaviour:
       description: "Actually a 45-year old man living in his mom\u2019s basement"
       hellCircle: 3
   - sinnerName: Sir Hamm
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: c6a8ca9b0ee4a1440abeeb833c753ecc, type: 3}
     sins:
     - sinId: 0
       description: Is a hamster
@@ -433,7 +433,7 @@ MonoBehaviour:
       description: Mastered meditation and learned to levitate
       hellCircle: 1
   - sinnerName: Virtuvious IX
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 3cd9575f35b172046941dfab486d5412, type: 3}
     sins:
     - sinId: 0
       description: Owns eighteen identical togas

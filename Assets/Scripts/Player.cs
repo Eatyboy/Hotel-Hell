@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private InputSystem_Actions ctrl;
+    private int correctCount;
+    private bool paused = false;
+
+    public GameManager gameManager;
 
     private void Awake()
     {
@@ -43,50 +47,68 @@ public class Player : MonoBehaviour
 
     private void Zero(InputAction.CallbackContext ctx)
     {
+        paused = !paused; 
+        if (paused)
+        {
+            gameManager.Pause();
+        }
+        else
+        {
+            gameManager.UnPause();
+        }
     }
 
     private void One(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Limbo);
     }
 
     private void Two(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Lust);
     }
 
     private void Three(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Gluttony);
     }
 
     private void Four(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Greed);
     }
 
     private void Five(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Anger);
     }
 
     private void Six(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Heresy);
     }
 
     private void Seven(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Violence);
     }
 
     private void Eight(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Fraud);
     }
 
     private void Nine(InputAction.CallbackContext ctx)
     {
+        if (paused) {return;}
         SendToFloor(HellCircle.Treachery);
     }
 
@@ -100,6 +122,7 @@ public class Player : MonoBehaviour
         if (greatestSin == floor)
         {
             Debug.Log("Correct!");
+            correctCount++;
         }
         else
         {

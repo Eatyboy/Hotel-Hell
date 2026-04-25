@@ -23,6 +23,7 @@ public class SinnerCard : MonoBehaviour
         StringBuilder sb = new();
         foreach (var sin in sins)
         {
+            sb.Append("• ");
             sb.Append(sin.description);
             sb.Append('\n');
         }

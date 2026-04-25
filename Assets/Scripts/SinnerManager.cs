@@ -22,13 +22,19 @@ public class SinnerManager : MonoBehaviour
 
     public List<Sprite> spritesList = new();
     public List<SinnerData> keySinnerList = new();
+    private List<SinnerData> unusedKeySinners;
 
     [Header("Parameters")]
-    public int maxSins = 4;
+    public int minSins = 3;
+    public int maxSins = 5;
+    public float maxInspectionTimeSeconds = 30.0f;
+    public int keyNPCRate = 9;
 
     [Header("State")]
     public Sinner currentSinner = null;
     public Queue<SinnerData> sinnerQueue = new();
+    public int sinnersProcessed = 0;
+    public float inspectionTimeSecondsRemaining = 0.0f;
 
     private const int SINNER_QUEUE_LENGTH = 9;
 
@@ -46,9 +52,11 @@ public class SinnerManager : MonoBehaviour
         sinsList = Importer.LoadSins();
         dialogueList = Importer.LoadDialogue();
 
+        unusedKeySinners = new(keySinnerList);
+
         for (int i = 0; i < SINNER_QUEUE_LENGTH; ++i)
         {
-            AddSinnerToQueue(i == 1 || i == 6);
+            AddSinnerToQueue();
         }
 
         SinnerCard.instance.Close();
@@ -56,8 +64,25 @@ public class SinnerManager : MonoBehaviour
         NextSinner();
     }
 
-    public void AddSinnerToQueue(bool isKeySinner = false)
+    private void Update()
     {
+        float dt = Time.deltaTime;
+
+        if (currentSinner != null)
+        {
+            inspectionTimeSecondsRemaining -= dt;
+
+            if (inspectionTimeSecondsRemaining < 0.0f)
+            {
+                SendSinnerAway();
+                Player.instance.LoseHP();
+            }
+        }
+    }
+
+    public void AddSinnerToQueue()
+    {
+        bool isKeySinner = sinnersProcessed % 9 == 2 && unusedKeySinners.Count > 0;
         SinnerData data = isKeySinner
             ? GetKeySinnerData()
             : GetRandomlyGeneratedSinnerData();
@@ -69,7 +94,8 @@ public class SinnerManager : MonoBehaviour
     {
         Assert.IsTrue(currentSinner == null);
 
-        SinnerData data = sinnerQueue.Dequeue(); 
+        SinnerData data = sinnerQueue.Dequeue();
+        if (sinnersProcessed == 1) data.sinnerName = "Joe Lina";
 
         Sinner sinner = Instantiate(sinnerPrefab, sinnerSpawnPoint.position, Quaternion.identity, canvas.transform);
         sinner.data = data;
@@ -77,6 +103,7 @@ public class SinnerManager : MonoBehaviour
 
         currentSinner = sinner;
 
+        inspectionTimeSecondsRemaining = maxInspectionTimeSeconds;
         SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
     }
 
@@ -90,7 +117,8 @@ public class SinnerManager : MonoBehaviour
             sprite = Utils.GetRandomItemInList(spritesList), 
             sinnerDialogue = Utils.GetRandomItemInList(dialogueList)
         };
-        for (int i = 0; i < maxSins; ++i)
+        int sinCount = UnityEngine.Random.Range(minSins, maxSins + 1);
+        for (int i = 0; i < sinCount; ++i)
         {
             Sin sin = Utils.GetRandomItemInList(sinsList);
             while (data.sins.Any(s => s.sinId == sin.sinId))
@@ -104,7 +132,16 @@ public class SinnerManager : MonoBehaviour
 
     public SinnerData GetKeySinnerData()
     {
-        return Utils.GetRandomItemInList(keySinnerList);
+        if (unusedKeySinners.Count == 0)
+        {
+            Debug.LogError("Tried to get key sinner when none were remaining");
+            return null;
+        }
+
+        int index = UnityEngine.Random.Range(0, unusedKeySinners.Count);
+        SinnerData data = unusedKeySinners[index];
+        unusedKeySinners.RemoveAt(index);
+        return data;
     }
 
     [ContextMenu("Send Current Sinner Away")]
@@ -113,7 +150,8 @@ public class SinnerManager : MonoBehaviour
         SinnerCard.instance.Close();
         Destroy(currentSinner.gameObject);
         currentSinner = null;
-        AddSinnerToQueue(false);
+        AddSinnerToQueue();
+        sinnersProcessed++;
 
         NextSinner();
     }

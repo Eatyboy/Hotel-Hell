@@ -5,17 +5,18 @@ public class GameManager : MonoBehaviour
 {
     public int playerSouls = 3;
     [SerializeField] private GameObject pause;
+    public static GameManager instance;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    private void Awake()
     {
         pause.SetActive(false);
+        if (instance != null && instance != this) Destroy(gameObject);
+        else instance = this;
     }
 
-    // Update is called once per frame
-    private void Update()
+    public void GameOver()
     {
-        
+        Debug.Log("Game Over");
     }
 
     public void Pause()

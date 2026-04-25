@@ -10,6 +10,7 @@ public class SinnerCard : MonoBehaviour
     public GameObject sinnerCardObject;
     public TextMeshProUGUI sinnerNameTMP;
     public TextMeshProUGUI sinnerDescriptionTMP;
+    public TextMeshProUGUI sinnerDialoguer; 
 
     private void Awake()
     {
@@ -17,9 +18,10 @@ public class SinnerCard : MonoBehaviour
         else instance = this;
     }
 
-    public void Open(string sinnerName, List<Sin> sins)
+    public void Open(string sinnerName, string sinnerDialogue, List<Sin> sins)
     {
         sinnerNameTMP.text = sinnerName;
+        sinnerDialoguer.text = sinnerDialogue;
         StringBuilder sb = new();
         foreach (var sin in sins)
         {

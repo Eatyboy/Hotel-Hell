@@ -19,5 +19,6 @@ public class SinnerData
 {
     public string sinnerName;
     public Sprite sprite;
+    public string sinnerDialogue; 
     public List<Sin> sins = new();
 }

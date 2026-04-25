@@ -18,6 +18,8 @@ public class SinnerManager : MonoBehaviour
     public List<Sin> sinsList = new();
     public List<string> firstNamesList = new();
     public List<string> lastNamesList = new();
+    public List<string> dialogueList = new();
+
     public List<Sprite> spritesList = new();
     public List<SinnerData> keySinnerList = new();
     private List<SinnerData> unusedKeySinners;
@@ -48,6 +50,7 @@ public class SinnerManager : MonoBehaviour
         firstNamesList = firstNames;
         lastNamesList = lastNames;
         sinsList = Importer.LoadSins();
+        dialogueList = Importer.LoadDialogue();
 
         unusedKeySinners = new(keySinnerList);
 
@@ -100,9 +103,8 @@ public class SinnerManager : MonoBehaviour
 
         currentSinner = sinner;
 
-        SinnerCard.instance.Open(data.sinnerName, data.sins);
-
         inspectionTimeSecondsRemaining = maxInspectionTimeSeconds;
+        SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
     }
 
     public SinnerData GetRandomlyGeneratedSinnerData()
@@ -112,7 +114,8 @@ public class SinnerManager : MonoBehaviour
             sinnerName = Utils.GetRandomItemInList(firstNamesList)
                 + " "
                 + Utils.GetRandomItemInList(lastNamesList),
-            sprite = Utils.GetRandomItemInList(spritesList)
+            sprite = Utils.GetRandomItemInList(spritesList), 
+            sinnerDialogue = Utils.GetRandomItemInList(dialogueList)
         };
         int sinCount = UnityEngine.Random.Range(minSins, maxSins + 1);
         for (int i = 0; i < sinCount; ++i)

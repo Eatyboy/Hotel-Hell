@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mcNumberTMP;
     [SerializeField] private Sprite mcDefault;
     [SerializeField] private Sprite mcHoldUp;
+    [SerializeField] private TextMeshProUGUI[] floorNumTMPs;
+    [SerializeField] private TextMeshProUGUI[] floorNameTMPs;
 
     [Header("Parameters")]
     public int maxHp = 3;
@@ -146,6 +148,11 @@ public class Player : MonoBehaviour
     {
         AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorButton);
 
+        Color oldNumColor = floorNumTMPs[(int)floor - 1].color;
+        Color oldNameColor = floorNameTMPs[(int)floor - 1].color;
+        floorNumTMPs[(int)floor - 1].color = Color.white;
+        floorNameTMPs[(int)floor - 1].color = Color.white;
+
         HellCircle greatestSin = HellCircle.None; 
         foreach (var sin in SinnerManager.instance.currentSinner.data.sins)
         {
@@ -164,6 +171,8 @@ public class Player : MonoBehaviour
 
         mcNumberTMP.gameObject.SetActive(false);
         mc.sprite = mcDefault;
+        floorNumTMPs[(int)floor - 1].color = oldNumColor;
+        floorNameTMPs[(int)floor - 1].color = oldNameColor;
 
         if (greatestSin == floor)
         {

@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 public class SinnerManager : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class SinnerManager : MonoBehaviour
     [SerializeField] private Transform sinnerExitPoint;
     [SerializeField] private Transform sinnerParent;
     [SerializeField] private Elevator elevator;
+
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private Image timerProgress;
 
     [Header("Data")]
     public List<Sin> sinsList = new();
@@ -41,6 +46,7 @@ public class SinnerManager : MonoBehaviour
     public Queue<SinnerData> sinnerQueue = new();
     public int sinnersProcessed = 0;
     public float inspectionTimeSecondsRemaining = 0.0f;
+    public bool isPlayerProcessingSinner = false;
 
     private const int SINNER_QUEUE_LENGTH = 9;
 
@@ -76,9 +82,12 @@ public class SinnerManager : MonoBehaviour
     {
         float dt = Time.deltaTime;
 
-        if (currentSinner != null)
+        if (isPlayerProcessingSinner && currentSinner != null)
         {
             inspectionTimeSecondsRemaining -= dt;
+
+            timerText.text = Mathf.FloorToInt(inspectionTimeSecondsRemaining).ToString();
+            timerProgress.fillAmount = inspectionTimeSecondsRemaining / maxInspectionTimeSeconds;
 
             if (inspectionTimeSecondsRemaining < 0.0f)
             {
@@ -132,7 +141,7 @@ public class SinnerManager : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / sinnerEnterDuration;
-            t = t == 1.0f ? 1.0f : 1.0f - Mathf.Pow(2.0f, -10.0f * t);
+            t = Utils.ExpEaseOut(t);
 
             currentSinner.transform.position = Vector3.Lerp(sinnerSpawnPoint.position, sinnerStayPoint.position, t);
             currentSinner.image.color = Color.Lerp(transparentColor, opaqueColor, t);
@@ -143,6 +152,8 @@ public class SinnerManager : MonoBehaviour
         currentSinner.transform.position = sinnerStayPoint.position;
 
         SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
+
+        isPlayerProcessingSinner = true;
     }
 
     public SinnerData GetRandomlyGeneratedSinnerData()
@@ -187,6 +198,8 @@ public class SinnerManager : MonoBehaviour
     [ContextMenu("Send Current Sinner Away")]
     public IEnumerator SendSinnerAway()
     {
+        isPlayerProcessingSinner = false;
+
         SinnerCard.instance.Close();
 
         elevator.OpenElevator();
@@ -210,7 +223,7 @@ public class SinnerManager : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / sinnerExitDuration;
-            t = t == 1.0f ? 1.0f : 1.0f - Mathf.Pow(2.0f, -10.0f * t);
+            t = Utils.ExpEaseOut(t);
 
             currentSinner.transform.position = Vector3.Lerp(sinnerStayPoint.position, sinnerExitPoint.position, t);
             currentSinner.image.color = Color.Lerp(opaqueColor, transparentColor, t);

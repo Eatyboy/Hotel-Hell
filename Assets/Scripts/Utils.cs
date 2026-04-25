@@ -44,4 +44,6 @@ public class Utils
         return itemList[0].item; 
     }
 
+    public static float ExpEaseOut(float t) =>
+        t == 1.0f ? 1.0f : 1.0f - Mathf.Pow(2.0f, -10.0f * t);
 }

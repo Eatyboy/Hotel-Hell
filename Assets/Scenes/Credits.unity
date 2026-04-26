@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -18, y: -409}
+  m_AnchoredPosition: {x: -18, y: -380}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267644420
@@ -176,8 +176,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: any resemblance to actual events, companies, or persons, living or dead,
+  m_text: 'any resemblance to actual events, companies, or persons, living or dead,
     is purely coincidental
+
+
+    special thanks to thomas!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8fd6e87074a894be1a45deb00b4a39dc, type: 2}
   m_sharedMaterial: {fileID: 4574223118618892311, guid: 8fd6e87074a894be1a45deb00b4a39dc, type: 2}
@@ -291,7 +294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -256, y: -163}
+  m_AnchoredPosition: {x: -256, y: -155}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341728301

@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 199034641219103245, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1359204618574023297, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
       propertyPath: m_SizeDelta.y
@@ -420,7 +420,8 @@ MonoBehaviour:
     sinDescription: "Dirty, dirty, liars. Don\u2019t let them fool you, Receptionist."
     hellSprite: {fileID: 6947775041736957420, guid: 3f2695ab53131446c837115b0a6fa2ca, type: 3}
   - sinName: VIOLENCE
-    sinDescription: These chaps hurt others. Physically.
+    sinDescription: "Physical damage, property damage, kidnapping\u2026Man, humans
+      are evil. "
     hellSprite: {fileID: 6947775041736957420, guid: aed0f14130379433690f788c1909782e, type: 3}
   - sinName: FRAUD
     sinDescription: Lying on a larger scale compared to Heresy. Usually for profit.

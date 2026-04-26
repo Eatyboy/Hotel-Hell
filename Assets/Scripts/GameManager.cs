@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -5,32 +6,37 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int playerSouls = 3;
-    [SerializeField] private GameObject pause;
     public static GameManager instance;
+
+    public float transitionDuration = 1.0f;
 
     private void Awake()
     {
-        pause.SetActive(false);
         if (instance != null && instance != this) Destroy(gameObject);
         else instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public IEnumerator StartGame()
+    {
+        AudioManager.instance.StopMusic();
+        yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
+        yield return SceneManager.LoadSceneAsync("Game");
+    }
+
+    public IEnumerator QuitToMainMenu()
+    {
+        AudioManager.instance.StopMusic();
+        yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
+        yield return SceneManager.LoadSceneAsync("MainMenu");
+        yield return ScreenFader.FadeIn(transitionDuration / 2.0f);
     }
 
     public void GameOver()
     {
         Debug.Log("Game Over");
-        AudioManager.instance.StopMusic();
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(QuitToMainMenu());
     }
 
-    public void Pause()
-    {
-        Time.timeScale = 0f;
-        pause.SetActive(true);
-    }
-
-    public void UnPause()
-    {
-        Time.timeScale = 1f;
-        pause.SetActive(false);
-    }
 }

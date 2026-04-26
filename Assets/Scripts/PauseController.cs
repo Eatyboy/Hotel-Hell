@@ -5,14 +5,24 @@ using System.Collections.Generic;
 
 public class PauseController : MonoBehaviour
 {
+    public static PauseController instance;
+
+    public GameObject pause;
     public List<FloorText> floors = new List<FloorText>();
     public TextMeshProUGUI sinName;
     public TextMeshProUGUI sinDescription;
     public Image sinImage;
     private int[] eachSin = new int[] {0,0,0,0,0,0,0,0,0};
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private void Awake()
+    {
+        if (instance != null && instance != this) Destroy(gameObject);
+        else instance = this;
+    }
+
     void Start()
     {
+        pause.SetActive(false);
         resetPause();
     }
 
@@ -20,6 +30,17 @@ public class PauseController : MonoBehaviour
     void Update()
     {
         
+    }
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        pause.SetActive(true);
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = 1f;
+        pause.SetActive(false);
     }
 
     public void updateEachSin(int index)

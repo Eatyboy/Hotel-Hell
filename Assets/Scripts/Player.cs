@@ -86,11 +86,11 @@ public class Player : MonoBehaviour
         if (paused)
         {
             myPauseController.resetPause();
-            GameManager.instance.Pause();
+            PauseController.instance.Pause();
         }
         else
         {
-            GameManager.instance.UnPause();
+            PauseController.instance.UnPause();
         }
     }
 

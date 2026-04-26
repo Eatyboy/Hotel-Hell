@@ -54,6 +54,8 @@ public class SinnerManager : MonoBehaviour
     {
         if (instance != null && instance != this) Destroy(gameObject);
         else instance = this;
+
+        StartCoroutine(ScreenFader.FadeIn(GameManager.instance.transitionDuration / 2.0f));
     }
 
     private void Start()

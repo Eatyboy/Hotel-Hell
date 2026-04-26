@@ -6,10 +6,13 @@ using UnityEngine.InputSystem;
 public class TitleScene : MonoBehaviour
 {
     private InputSystem_Actions ctrl;
+    [SerializeField] private Animator animator;
 
     private void Awake()
     {
         ctrl = new();
+
+        StartCoroutine(ScreenFader.FadeIn(GameManager.instance.transitionDuration / 2.0f));
     }
 
     void Start()
@@ -39,7 +42,12 @@ public class TitleScene : MonoBehaviour
 
     private void StartGame(InputAction.CallbackContext ctx)
     {
-        SceneManager.LoadScene("Game");
+        animator.SetTrigger("StartGame");
+    }
+
+    private void GoToGame()
+    {
+        StartCoroutine(GameManager.instance.StartGame());
     }
 
     private void Credits(InputAction.CallbackContext ctx)

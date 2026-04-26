@@ -32,6 +32,6 @@ public class CreditsManager : MonoBehaviour
 
     public void RestartGame(InputAction.CallbackContext ctx)
     {
-        SceneManager.LoadSceneAsync("MainMenu");
+        StartCoroutine(GameManager.instance.StartMenu());
     }
 }

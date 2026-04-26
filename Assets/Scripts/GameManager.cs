@@ -41,6 +41,13 @@ public class GameManager : MonoBehaviour
         yield return ScreenFader.FadeIn(transitionDuration / 2.0f);
     }
 
+      public IEnumerator StartMenu()
+    {
+        AudioManager.instance.StopMusic();
+        yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
+        yield return SceneManager.LoadSceneAsync("MainMenu");
+    }
+
     public void GameOver()
     {
         Debug.Log("Game Over");

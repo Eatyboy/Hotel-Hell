@@ -70,7 +70,11 @@ public class SinnerManager : MonoBehaviour
 
         for (int i = 0; i < SINNER_QUEUE_LENGTH; ++i)
         {
-            AddSinnerToQueue();
+            if (i == 3)
+            {
+                AddSinnerToQueue(true);
+            }
+            else AddSinnerToQueue(false);
         }
 
         StartCoroutine(NextSinner());
@@ -97,12 +101,12 @@ public class SinnerManager : MonoBehaviour
         }
     }
 
-    public void AddSinnerToQueue()
+    public void AddSinnerToQueue(bool forceKeySinner = false, bool forceBobDave = false)
     {
-        bool isKeySinner = sinnersProcessed % 5 == 2 && unusedKeySinners.Count > 0;
+        bool isKeySinner = forceKeySinner || (sinnersProcessed % 5 == 2 && unusedKeySinners.Count > 0);
         SinnerData data = isKeySinner
             ? GetKeySinnerData()
-            : GetRandomlyGeneratedSinnerData();
+            : GetRandomlyGeneratedSinnerData(forceBobDave);
         sinnerQueue.Enqueue(data);
     }
 
@@ -156,7 +160,7 @@ public class SinnerManager : MonoBehaviour
         isPlayerProcessingSinner = true;
     }
 
-    public SinnerData GetRandomlyGeneratedSinnerData()
+    public SinnerData GetRandomlyGeneratedSinnerData(bool forceBobDave = false)
     {
         SinnerData data = new()
         {
@@ -189,7 +193,7 @@ public class SinnerManager : MonoBehaviour
 
         int bobDaveIndex = 1;
         int index = UnityEngine.Random.Range(0, unusedKeySinners.Count);
-        if (unusedKeySinners.Count == 8) index = bobDaveIndex;
+        if (unusedKeySinners.Count == 9) index = bobDaveIndex;
         SinnerData data = unusedKeySinners[index];
         unusedKeySinners.RemoveAt(index);
         return data;

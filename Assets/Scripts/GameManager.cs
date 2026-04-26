@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.StopMusic();
         yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
-        yield return SceneManager.LoadSceneAsync("MainMenu");
+        yield return SceneManager.LoadSceneAsync("Lose");
         yield return ScreenFader.FadeIn(transitionDuration / 2.0f);
     }
 

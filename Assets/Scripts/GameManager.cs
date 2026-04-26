@@ -25,6 +25,14 @@ public class GameManager : MonoBehaviour
         yield return SceneManager.LoadSceneAsync("Game");
     }
 
+    public IEnumerator GoCredits()
+    {
+        AudioManager.instance.StopMusic();
+        yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
+        yield return SceneManager.LoadSceneAsync("Credits");
+    }
+
+
     public IEnumerator QuitToMainMenu()
     {
         AudioManager.instance.StopMusic();

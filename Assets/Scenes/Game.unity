@@ -224,6 +224,90 @@ RectTransform:
   m_AnchoredPosition: {x: -883, y: -89}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &539867299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 539867301}
+  - component: {fileID: 539867300}
+  m_Layer: 0
+  m_Name: PauseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &539867300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539867299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c89b2962e42143e382c5d7ca54ed7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  pause: {fileID: 1288972946}
+  floors:
+  - sinName: LIMBO
+    sinDescription: "Average chaps. Didn\u2019t do anything wrong, but here they
+      stay. "
+    hellSprite: {fileID: 6947775041736957420, guid: a507cb73847e54adb94527760f910ca0, type: 3}
+  - sinName: LUST
+    sinDescription: "Believes they\u2019re some sort of harem anime protagonist. "
+    hellSprite: {fileID: 6947775041736957420, guid: b7e801c2a41c143b8a440a268ddbda61, type: 3}
+  - sinName: GLUTTONY
+    sinDescription: 'Self-indulgent, lazy, wasteful beings. '
+    hellSprite: {fileID: 6947775041736957420, guid: 79c7465ca006b4ae880bf9a67fb4cfb5, type: 3}
+  - sinName: GREED
+    sinDescription: "Guard my belongings, Receptionist. These people really do steal
+      anything\u2026 "
+    hellSprite: {fileID: 6947775041736957420, guid: 329a2405a2c3d47edb1f40b2f31768f5, type: 3}
+  - sinName: ANGER
+    sinDescription: 'Has only hate in their soul, but too scared to commit acts of
+      violence. '
+    hellSprite: {fileID: 6947775041736957420, guid: cf161ab8010b44e26a2d9e54424dd078, type: 3}
+  - sinName: HERESY
+    sinDescription: "Dirty, dirty, liars. Don\u2019t let them fool you, Receptionist."
+    hellSprite: {fileID: 6947775041736957420, guid: 3f2695ab53131446c837115b0a6fa2ca, type: 3}
+  - sinName: VIOLENCE
+    sinDescription: "Physical damage, property damage, kidnapping\u2026Man, humans
+      are evil. "
+    hellSprite: {fileID: 6947775041736957420, guid: aed0f14130379433690f788c1909782e, type: 3}
+  - sinName: FRAUD
+    sinDescription: Lying on a larger scale compared to Heresy. Usually for profit.
+    hellSprite: {fileID: 6947775041736957420, guid: b25b4a362393548f0a09c98f69316168, type: 3}
+  - sinName: TREACHERY
+    sinDescription: 'Traitors of the worst kind. Not an ounce of loyalty in their
+      bones. '
+    hellSprite: {fileID: 6947775041736957420, guid: b43591b86d3054cab8f2610de93f64ed, type: 3}
+  sinName: {fileID: 1288972945}
+  sinDescription: {fileID: 1288972944}
+  sinImage: {fileID: 1288972943}
+  sinnerPrefab: {fileID: 1560910184386192174, guid: 7bea2914f29c646a1bce44dbc1291ebe, type: 3}
+  spawnArea: {fileID: 1288972941}
+--- !u!4 &539867301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539867299}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1288972942}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &566344254
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +321,6 @@ GameObject:
   - component: {fileID: 566344256}
   - component: {fileID: 566344255}
   - component: {fileID: 566344259}
-  - component: {fileID: 566344260}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -355,24 +438,6 @@ MonoBehaviour:
   openDuration: 1
   closeDuration: 1
   closeRotationSpeed: 20
---- !u!114 &566344260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566344254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c89b2962e42143e382c5d7ca54ed7d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseController
-  floors: []
-  sinName: {fileID: 0}
-  sinDescription: {fileID: 0}
-  sinImage: {fileID: 0}
-  sinnerPrefab: {fileID: 0}
-  spawnArea: {fileID: 0}
 --- !u!1 &623338044
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +926,156 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1288972940
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 539867301}
+    m_Modifications:
+    - target: {fileID: 199034641219103245, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_Name
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 199034641219103245, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6344291096124994310, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+--- !u!224 &1288972941 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3819988133082587872, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+  m_PrefabInstance: {fileID: 1288972940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1288972942 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8520785687364375611, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+  m_PrefabInstance: {fileID: 1288972940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1288972943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1339948598234876919, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+  m_PrefabInstance: {fileID: 1288972940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &1288972944 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6093954829183288688, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+  m_PrefabInstance: {fileID: 1288972940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &1288972945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1167040114657020730, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+  m_PrefabInstance: {fileID: 1288972940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1288972946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199034641219103245, guid: 6be3512f7b20948ee8b4c00859374612, type: 3}
+  m_PrefabInstance: {fileID: 1288972940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1298935186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2688,3 +2903,4 @@ SceneRoots:
   - {fileID: 935446931}
   - {fileID: 566344258}
   - {fileID: 1194232085}
+  - {fileID: 539867301}

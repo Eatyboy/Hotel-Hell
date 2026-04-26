@@ -29,7 +29,7 @@
 “Stop looking at that card! Focus on me. ;)”
 “Is this a dream?”
 “Hi!”
-"Hiiiiiiii ;)"
+“Heya.”
 “I’ve played these games before…”
 “Is this Has Been Hotel?”
 “What’s your MBTI?”
@@ -38,12 +38,7 @@
 “Do you feel like talking about…Spoilage?”
 “Do you feel like talking about…late-stage capitalism?”
 “Do you feel like talking about…Our Cane?”
-"But that's... how losers think." 
-"I love the taste of iron!" 
 “Sort me quickly! I need to Taigamax.”
-"Feeling disconserted?" 
-"What is this, some kind of Hotel Inferno?" 
-"That's my floor!" 
 “Chat, is this real?”
 “Chat, is this hell?”
 “I know what you are.”
@@ -51,18 +46,7 @@
 “Is it a crime to be unsure?”
 “Wasssup.”
 “‘Sup; sup.”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
-“Beware of John CDGV...”
+“Beware of John CDGV.”
 “Do you know where the bathroom is?”
 “I miss her.”
 “Do people even read this?”
@@ -73,7 +57,6 @@
 “I forgot to bring my sunscreen.”
 “Are the residents here evil?”
 “For real?!”
-"Why this kolaveri di?" 
 “None of these people know I was an undesirable child.”
 “I am thou, thou art I. Thou hast acquired a new vow.”
 “I think I am duck. Therefore, I am duck?”

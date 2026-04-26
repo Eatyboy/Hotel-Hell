@@ -4,7 +4,9 @@ Tamika
 Slarny
 Kunal
 Grace
+Nathan
 Drake
+Kevin
 Snorgle
 Denzel
 John
@@ -78,6 +80,7 @@ Alexander
 Shrek
 Cloud
 Captain
+Carl
 Cassie
 Bowser
 Luigi
@@ -87,12 +90,6 @@ Peter
 Donkey
 Dr.
 Zelda
-Mr. 
-Mrs.
-Ms. 
-Mx. 
-Strife
-Sir
 Link
 Zero
 Yuri

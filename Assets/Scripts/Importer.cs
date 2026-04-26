@@ -1,33 +1,34 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class Importer
 {
-    private static readonly string sinsTextPath = Application.dataPath + "/TextData/sins.txt";
-    private static readonly string namesTextPath = Application.dataPath + "/TextData/names.txt";
-    private static readonly string dialogueTextPath = Application.dataPath + "/TextData/dialogue.txt";
+    private const string sinsResourcePath = "TextData/sins";
+    private const string namesResourcePath = "TextData/names";
+    private const string dialogueResourcePath = "TextData/dialogue";
 
+    private static StringReader OpenResource(string resourcePath)
+    {
+        TextAsset asset = Resources.Load<TextAsset>(resourcePath);
+        if (asset == null)
+        {
+            Debug.LogWarning($"Could not load text resource at Resources/{resourcePath}");
+            return null;
+        }
+        return new StringReader(asset.text);
+    }
 
     public static List<Sin> LoadSins()
     {
-        if (string.IsNullOrEmpty(sinsTextPath))
-        {
-            Debug.LogWarning("Invalid sins file path");
-            return null;
-        }
+        using StringReader sr = OpenResource(sinsResourcePath);
+        if (sr == null) return null;
 
         List<Sin> sins = new();
 
-        using StreamReader sr = new(sinsTextPath);
         string line;
-        int count = 0;
         int idAccumulator = 1;
-        int sinsCreated = 0;
         HellCircle currentCircle = HellCircle.None;
         while ((line = sr.ReadLine()) != null)
         {
@@ -49,11 +50,8 @@ public class Importer
                 };
 
                 sins.Add(sin);
-
-                sinsCreated++;
                 idAccumulator++;
             }
-            count++;
         }
 
         return sins;
@@ -61,17 +59,8 @@ public class Importer
 
     public static (List<string> firstNames, List<string> lastNames) LoadNames()
     {
-        if (string.IsNullOrEmpty(namesTextPath))
-        {
-            Debug.LogWarning("Invalid names file path");
-            return (null, null);
-        }
-
-        using StreamReader sr = new(namesTextPath);
-        string line;
-        int count = 0;
-        int firstNamesAdded = 0;
-        int lastNamesAdded = 0;
+        using StringReader sr = OpenResource(namesResourcePath);
+        if (sr == null) return (null, null);
 
         bool isFirstName = false;
         bool isLastName = false;
@@ -79,6 +68,7 @@ public class Importer
         List<string> firstNamesList = new();
         List<string> lastNamesList = new();
 
+        string line;
         while ((line = sr.ReadLine()) != null)
         {
             if (line.Contains("First Name:"))
@@ -94,41 +84,27 @@ public class Importer
             else if (!string.IsNullOrEmpty(line))
             {
                 string sinnerName = line.Trim();
-                if (isFirstName)
-                {
-                    firstNamesList.Add(sinnerName);
-                    firstNamesAdded++;
-                } 
-                else if (isLastName)
-                {
-                    lastNamesList.Add(sinnerName);
-                    lastNamesAdded++;
-                }
+                if (isFirstName) firstNamesList.Add(sinnerName);
+                else if (isLastName) lastNamesList.Add(sinnerName);
             }
-            count++;
         }
 
         return (firstNamesList, lastNamesList);
     }
 
-    public static List<string> LoadDialogue() {
-        if (string.IsNullOrEmpty(dialogueTextPath))
-        {
-            Debug.LogWarning("Invalid names file path");
-            return null;
-        }
-
-        using StreamReader sr = new(dialogueTextPath);
-        string line;
+    public static List<string> LoadDialogue()
+    {
+        using StringReader sr = OpenResource(dialogueResourcePath);
+        if (sr == null) return null;
 
         List<string> dialogues = new();
 
+        string line;
         while ((line = sr.ReadLine()) != null)
         {
             dialogues.Add(line);
         }
 
         return dialogues;
-
     }
 }

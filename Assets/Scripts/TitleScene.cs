@@ -52,6 +52,6 @@ public class TitleScene : MonoBehaviour
 
     private void Credits(InputAction.CallbackContext ctx)
     {
-       // SceneManagement.loadScene():
+        StartCoroutine(GameManager.instance.GoCredits());
     }
 }

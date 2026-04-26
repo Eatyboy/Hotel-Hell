@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Sprite mcHoldUp;
     [SerializeField] private TextMeshProUGUI[] floorNumTMPs;
     [SerializeField] private TextMeshProUGUI[] floorNameTMPs;
+    [SerializeField] private TextMeshProUGUI score;
+
 
     [Header("Parameters")]
     public int maxHp = 3;
@@ -236,6 +238,7 @@ public class Player : MonoBehaviour
         if (greatestSin == floor)
         {
             souls++;
+            score.text = souls+""; 
         }
         else
         {

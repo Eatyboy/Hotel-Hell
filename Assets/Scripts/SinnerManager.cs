@@ -205,6 +205,8 @@ public class SinnerManager : MonoBehaviour
         elevator.OpenElevator();
         yield return new WaitUntil(() => elevator.isOpened);
 
+        if (maxInspectionTimeSeconds > 10)  maxInspectionTimeSeconds--;
+
         Color opaqueColor = new(
             currentSinner.image.color.r,
             currentSinner.image.color.g,

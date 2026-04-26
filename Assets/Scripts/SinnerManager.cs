@@ -238,5 +238,6 @@ public class SinnerManager : MonoBehaviour
         currentSinner = null;
         AddSinnerToQueue();
         sinnersProcessed++;
+        yield return NextSinner();
     }
 }

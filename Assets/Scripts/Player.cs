@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using TMPro;
@@ -103,7 +104,7 @@ public class Player : MonoBehaviour
 
         if (selected) {return;}
 
-        StartCoroutine(SendToFloor(HellCircle.Limbo));
+        SendToFloor(HellCircle.Limbo).Forget();
         PauseController.instance.updateEachSin(0);
     }
 
@@ -115,7 +116,7 @@ public class Player : MonoBehaviour
         }
 
         if (selected) {return;}
-        StartCoroutine(SendToFloor(HellCircle.Lust));
+        SendToFloor(HellCircle.Lust).Forget();
         PauseController.instance.updateEachSin(1);
         
     }
@@ -128,7 +129,7 @@ public class Player : MonoBehaviour
         }
 
         if (selected) {return;}
-        StartCoroutine(SendToFloor(HellCircle.Gluttony));
+        SendToFloor(HellCircle.Gluttony).Forget();
         PauseController.instance.updateEachSin(2);
     }
 
@@ -140,7 +141,7 @@ public class Player : MonoBehaviour
         }
 
         if (selected) {return;}
-        StartCoroutine(SendToFloor(HellCircle.Greed));
+        SendToFloor(HellCircle.Greed).Forget();
         PauseController.instance.updateEachSin(3);
     }
 
@@ -152,7 +153,7 @@ public class Player : MonoBehaviour
         }
 
         if (selected) {return;}
-        StartCoroutine(SendToFloor(HellCircle.Anger));
+        SendToFloor(HellCircle.Anger).Forget();
         PauseController.instance.updateEachSin(4);
     }
 
@@ -164,7 +165,7 @@ public class Player : MonoBehaviour
         }
 
         if (selected) {return;}
-        StartCoroutine(SendToFloor(HellCircle.Heresy));
+        SendToFloor(HellCircle.Heresy).Forget();
         PauseController.instance.updateEachSin(5);
     }
 
@@ -176,7 +177,7 @@ public class Player : MonoBehaviour
         }
 
         if (selected) {return;}
-        StartCoroutine(SendToFloor(HellCircle.Violence));
+        SendToFloor(HellCircle.Violence).Forget();
         PauseController.instance.updateEachSin(6);
     }
 
@@ -188,7 +189,7 @@ public class Player : MonoBehaviour
         }
 
         if (selected) {return;}
-        StartCoroutine(SendToFloor(HellCircle.Fraud));
+        SendToFloor(HellCircle.Fraud).Forget();
         PauseController.instance.updateEachSin(7);
     }
 
@@ -200,11 +201,11 @@ public class Player : MonoBehaviour
         }
 
         if (selected) {return;}
-        StartCoroutine(SendToFloor(HellCircle.Treachery));
+        SendToFloor(HellCircle.Treachery).Forget();
         PauseController.instance.updateEachSin(8);
     }
 
-    public IEnumerator SendToFloor(HellCircle floor)
+    public async UniTask SendToFloor(HellCircle floor)
     {
         AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorButton);
         selected = true;
@@ -224,11 +225,11 @@ public class Player : MonoBehaviour
         mcNumberTMP.text = ((int)floor).ToString();
         mcNumberTMP.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(playerHoldUpSignDuration);
+        await UniTask.Delay(TimeSpan.FromSeconds(playerHoldUpSignDuration));
 
         AudioManager.instance.PlayOneShot(AudioManager.instance.elevatorDing);
 
-        yield return SinnerManager.instance.SendSinnerAway();
+        await SinnerManager.instance.SendSinnerAway();
 
         mcNumberTMP.gameObject.SetActive(false);
         mc.sprite = mcDefault;
@@ -245,10 +246,10 @@ public class Player : MonoBehaviour
             LoseHP();
         }
 
-        yield return new WaitForSeconds(nextSinnerDelay);
+        await UniTask.Delay(TimeSpan.FromSeconds(nextSinnerDelay));
         selected = false;
 
-        yield return SinnerManager.instance.NextSinner();
+        await SinnerManager.instance.NextSinner();
     }
 
     public void LoseHP()

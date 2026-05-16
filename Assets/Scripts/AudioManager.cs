@@ -1,5 +1,8 @@
 using System.Collections;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
@@ -47,7 +50,7 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        StartCoroutine(LoadBusses());
+        LoadBusses().Forget();
     }
 
     void Update()
@@ -61,9 +64,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadBusses()
+    public async UniTask LoadBusses()
     {
-        while (!RuntimeManager .HaveAllBanksLoaded) yield return null;
+        await UniTask.WaitUntil(() => RuntimeManager.HaveAllBanksLoaded);
 
         masterBus = RuntimeManager.GetBus("bus:/");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
@@ -111,12 +114,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(EventReference music)
     {
-        StartCoroutine(InitializeMusic(music));
+        InitializeMusic(music).Forget();
     }
 
-    private IEnumerator InitializeMusic(EventReference music)
+    private async UniTask InitializeMusic(EventReference music)
     {
-        yield return new WaitUntil(() => areBussesInitialized);
+        await UniTask.WaitUntil(() => areBussesInitialized);
 
         if (isMusicPlaying) StopMusic();
         musicEventInstance = CreateEventInstance(music);

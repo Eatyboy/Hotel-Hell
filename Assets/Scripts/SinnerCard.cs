@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using FMOD.Studio;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -36,7 +38,7 @@ public class SinnerCard : MonoBehaviour
         talkingEventInstance.stop(mode: STOP_MODE.IMMEDIATE);
     }
 
-    public IEnumerator Open(string sinnerName, string sinnerDialogue, List<Sin> sins)
+    public async UniTask Open(string sinnerName, string sinnerDialogue, List<Sin> sins)
     {
         sinnerCardObject.SetActive(true);
 
@@ -54,58 +56,32 @@ public class SinnerCard : MonoBehaviour
 
         sinnerCardObject.transform.rotation = Quaternion.identity;
         cardCanvasGroup.alpha = 1.0f;
-        float elapsedTime = 0.0f;
-        while (elapsedTime < openDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / openDuration;
-            t = Utils.ExpEaseOut(t);
-
-            sinnerCardObject.transform.position = Vector3.Lerp(startPosition.position, stayPosition.position, t);
-            sinnerCardObject.transform.localScale = Vector3.Lerp(Vector3.one * 0.3f, Vector3.one, t);
-
-            yield return null;
-        }
-        sinnerCardObject.transform.position = stayPosition.position;
-        sinnerCardObject.transform.localScale = Vector3.one;
-        StartCoroutine(Talk(talkingDurationMultiplier * sinnerDialogue.Length));
+        await Tweener.Group(openDuration, Easing.EaseOutExpo)
+            .AddVector3(startPosition.position, stayPosition.position, x => sinnerCardObject.transform.position = x)
+            .AddVector3(Vector3.one * 0.3f, Vector3.one, x => sinnerCardObject.transform.localScale = x)
+            .Play();
 
         AudioManager.instance.PlayOneShot(AudioManager.instance.paper);
+
+        await Talk(talkingDurationMultiplier * sinnerDialogue.Length);
     }
 
-    public IEnumerator Close()
+    public async UniTask Close()
     {
-        float elapsedTime = 0.0f;
-        while (elapsedTime < openDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / openDuration;
-            t = Utils.ExpEaseOut(t);
-
-            sinnerCardObject.transform.position = Vector3.Lerp(stayPosition.position, exitPosition.position, t);
-            sinnerCardObject.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
-            sinnerCardObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -elapsedTime * closeRotationSpeed * Mathf.Rad2Deg);
-            cardCanvasGroup.alpha = Mathf.Lerp(1.0f, 0.0f, t);
-
-            yield return null;
-        }
-        sinnerCardObject.transform.position = exitPosition.position;
-        sinnerCardObject.transform.localScale = Vector3.zero;
-        cardCanvasGroup.alpha = 0.0f;
+        await Tweener.Group(closeDuration, Easing.EaseOutExpo)
+            .AddVector3(stayPosition.position, exitPosition.position, x => sinnerCardObject.transform.position = x)
+            .AddVector3(Vector3.one, Vector3.zero, x => sinnerCardObject.transform.localScale = x)
+            .AddFloat(1.0f, 0.0f, x => cardCanvasGroup.alpha = x)
+            .Play();
 
         sinnerDialoguer.transform.parent.gameObject.SetActive(false);
         sinnerCardObject.SetActive(false);
     }
 
-    private IEnumerator Talk(float duration)
+    private async UniTask Talk(float duration)
     {
         talkingEventInstance.start();
-        float elapsedTime = 0.0f;
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+        await UniTask.Delay(TimeSpan.FromSeconds(duration));
         talkingEventInstance.stop(STOP_MODE.IMMEDIATE);
     }
 }

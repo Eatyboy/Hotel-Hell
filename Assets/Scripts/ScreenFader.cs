@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 
 public class ScreenFader : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class ScreenFader : MonoBehaviour
         instance.fadeBackground.blocksRaycasts = false;
     }
 
-    public static IEnumerator FadeIn(float duration)
+    public static async UniTask FadeIn(float duration)
     {
         float elapsedTime = 0.0f;
         while (elapsedTime < duration)
@@ -27,13 +28,13 @@ public class ScreenFader : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
             instance.fadeBackground.alpha = Mathf.Clamp01(1.0f - t);
-            yield return null;
+            await UniTask.Yield();
         }
         instance.fadeBackground.alpha = 0.0f;
         instance.fadeBackground.blocksRaycasts = false;
     }
 
-    public static IEnumerator FadeOut(float duration)
+    public static async UniTask FadeOut(float duration)
     {
         instance.fadeBackground.blocksRaycasts = true;
         float elapsedTime = 0.0f;
@@ -42,7 +43,7 @@ public class ScreenFader : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
             instance.fadeBackground.alpha = Mathf.Clamp01(t);
-            yield return null;
+            await UniTask.Yield();
         }
         instance.fadeBackground.alpha = 1.0f;
     }

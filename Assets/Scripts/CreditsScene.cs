@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,7 @@ public class CreditsManager : MonoBehaviour
     void Awake()
     {
         ctrl = new();
-        StartCoroutine(ScreenFader.FadeIn(GameManager.instance.transitionDuration / 2.0f));
+        ScreenFader.FadeIn(GameManager.instance.transitionDuration / 2.0f).Forget();
     }
 
     // Update is called once per frame
@@ -32,6 +33,6 @@ public class CreditsManager : MonoBehaviour
 
     public void RestartGame(InputAction.CallbackContext ctx)
     {
-        StartCoroutine(GameManager.instance.StartMenu());
+        GameManager.instance.StartMenu().Forget();
     }
 }

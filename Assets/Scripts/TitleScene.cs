@@ -1,18 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using Cysharp.Threading.Tasks;
 
 
 public class TitleScene : MonoBehaviour
 {
     private InputSystem_Actions ctrl;
     [SerializeField] private Animator animator;
+    private bool inStartCutscene = false;
 
     private void Awake()
     {
         ctrl = new();
 
-        StartCoroutine(ScreenFader.FadeIn(GameManager.instance.transitionDuration / 2.0f));
+        ScreenFader.FadeIn(GameManager.instance.transitionDuration / 2.0f).Forget();
     }
 
     void Start()
@@ -42,16 +44,20 @@ public class TitleScene : MonoBehaviour
 
     private void StartGame(InputAction.CallbackContext ctx)
     {
-        animator.SetTrigger("StartGame");
+        if (!inStartCutscene)
+        {
+            animator.SetTrigger("StartGame");
+            inStartCutscene = true;
+        }
     }
 
     private void GoToGame()
     {
-        StartCoroutine(GameManager.instance.StartGame());
+        GameManager.instance.StartGame().Forget();
     }
 
     private void Credits(InputAction.CallbackContext ctx)
     {
-        StartCoroutine(GameManager.instance.GoCredits());
+        GameManager.instance.GoCredits().Forget();
     }
 }

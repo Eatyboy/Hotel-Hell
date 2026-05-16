@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -55,7 +56,7 @@ public class SinnerManager : MonoBehaviour
         if (instance != null && instance != this) Destroy(gameObject);
         else instance = this;
 
-        StartCoroutine(ScreenFader.FadeIn(GameManager.instance.transitionDuration / 2.0f));
+        ScreenFader.FadeIn(GameManager.instance.transitionDuration / 2.0f).Forget();
     }
 
     private void Start()
@@ -77,7 +78,7 @@ public class SinnerManager : MonoBehaviour
             else AddSinnerToQueue(false);
         }
 
-        StartCoroutine(NextSinner());
+        NextSinner().Forget();
 
         AudioManager.instance.PlayMusic(AudioManager.instance.mainTheme);
     }
@@ -95,7 +96,7 @@ public class SinnerManager : MonoBehaviour
 
             if (inspectionTimeSecondsRemaining < 0.0f)
             {
-                StartCoroutine(SendSinnerAway());
+                SendSinnerAway().Forget();
                 Player.instance.LoseHP();
             }
         }
@@ -111,7 +112,7 @@ public class SinnerManager : MonoBehaviour
     }
 
     [ContextMenu("Next Sinner")]
-    public IEnumerator NextSinner()
+    public async UniTask NextSinner()
     {
         Assert.IsTrue(currentSinner == null);
 
@@ -126,36 +127,12 @@ public class SinnerManager : MonoBehaviour
 
         inspectionTimeSecondsRemaining = maxInspectionTimeSeconds;
 
-        Color opaqueColor = new(
-            currentSinner.image.color.r,
-            currentSinner.image.color.g,
-            currentSinner.image.color.b,
-            1.0f
-            );
-        Color transparentColor = new(
-            currentSinner.image.color.r,
-            currentSinner.image.color.g,
-            currentSinner.image.color.b,
-            0.0f
-            );
+        await Tweener.Group(sinnerEnterDuration, Easing.EaseOutExpo)
+            .AddVector3(sinnerSpawnPoint.position, sinnerStayPoint.position, x => currentSinner.transform.position = x)
+            .AddColor(Utils.WithAlpha(currentSinner.image.color, 0.0f), Utils.WithAlpha(currentSinner.image.color, 1.0f), x => currentSinner.image.color = x)
+            .Play();
 
-        currentSinner.image.color = opaqueColor;
-        float elapsedTime = 0.0f;
-        while (elapsedTime < sinnerEnterDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / sinnerEnterDuration;
-            t = Utils.ExpEaseOut(t);
-
-            currentSinner.transform.position = Vector3.Lerp(sinnerSpawnPoint.position, sinnerStayPoint.position, t);
-            currentSinner.image.color = Color.Lerp(transparentColor, opaqueColor, t);
-
-            yield return null;
-        }
-        currentSinner.image.color = opaqueColor;
-        currentSinner.transform.position = sinnerStayPoint.position;
-
-        yield return SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
+        await SinnerCard.instance.Open(data.sinnerName, data.sinnerDialogue, data.sins);
 
         isPlayerProcessingSinner = true;
     }
@@ -200,47 +177,24 @@ public class SinnerManager : MonoBehaviour
     }
 
     [ContextMenu("Send Current Sinner Away")]
-    public IEnumerator SendSinnerAway()
+    public async UniTask SendSinnerAway()
     {
         isPlayerProcessingSinner = false;
 
-        StartCoroutine(SinnerCard.instance.Close());
+        await SinnerCard.instance.Close();
 
         elevator.OpenElevator();
-        yield return new WaitUntil(() => elevator.isOpened);
+        await UniTask.WaitUntil(() => elevator.isOpened);
 
         if (maxInspectionTimeSeconds > 10)  maxInspectionTimeSeconds--;
 
-        Color opaqueColor = new(
-            currentSinner.image.color.r,
-            currentSinner.image.color.g,
-            currentSinner.image.color.b,
-            1.0f
-            );
-        Color transparentColor = new(
-            currentSinner.image.color.r,
-            currentSinner.image.color.g,
-            currentSinner.image.color.b,
-            0.0f
-            );
-
-        float elapsedTime = 0.0f;
-        while (elapsedTime < sinnerExitDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / sinnerExitDuration;
-            t = Utils.ExpEaseOut(t);
-
-            currentSinner.transform.position = Vector3.Lerp(sinnerStayPoint.position, sinnerExitPoint.position, t);
-            currentSinner.image.color = Color.Lerp(opaqueColor, transparentColor, t);
-
-            yield return null;
-        }
-        currentSinner.transform.position = sinnerExitPoint.position;
-        currentSinner.image.color = transparentColor;
+        await Tweener.Group(sinnerExitDuration, Easing.EaseOutExpo)
+            .AddVector3(sinnerStayPoint.position, sinnerExitPoint.position, x => currentSinner.transform.position = x)
+            .AddColor(Utils.WithAlpha(currentSinner.image.color, 1.0f), Utils.WithAlpha(currentSinner.image.color, 0.0f), x => currentSinner.image.color = x)
+            .Play();
 
         elevator.CloseElevator();
-        yield return new WaitUntil(() => !elevator.isOpened);
+        await UniTask.WaitUntil(() => !elevator.isOpened);
 
         Destroy(currentSinner.gameObject);
         currentSinner = null;

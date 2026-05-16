@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,40 +19,40 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public IEnumerator StartGame()
+    public async UniTask StartGame()
     {
         AudioManager.instance.StopMusic();
-        yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
-        yield return SceneManager.LoadSceneAsync("Game");
+        await ScreenFader.FadeOut(transitionDuration / 2.0f);
+        await SceneManager.LoadSceneAsync("Game");
     }
 
-    public IEnumerator GoCredits()
+    public async UniTask GoCredits()
     {
         AudioManager.instance.StopMusic();
-        yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
-        yield return SceneManager.LoadSceneAsync("Credits");
+        await ScreenFader.FadeOut(transitionDuration / 2.0f);
+        await SceneManager.LoadSceneAsync("Credits");
     }
 
 
-    public IEnumerator QuitToMainMenu()
+    public async UniTask QuitToMainMenu()
     {
         AudioManager.instance.StopMusic();
-        yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
-        yield return SceneManager.LoadSceneAsync("Lose");
-        yield return ScreenFader.FadeIn(transitionDuration / 2.0f);
+        await ScreenFader.FadeOut(transitionDuration / 2.0f);
+        await SceneManager.LoadSceneAsync("Lose");
+        await ScreenFader.FadeIn(transitionDuration / 2.0f);
     }
 
-      public IEnumerator StartMenu()
+    public async UniTask StartMenu()
     {
         AudioManager.instance.StopMusic();
-        yield return ScreenFader.FadeOut(transitionDuration / 2.0f);
-        yield return SceneManager.LoadSceneAsync("MainMenu");
+        await ScreenFader.FadeOut(transitionDuration / 2.0f);
+        await SceneManager.LoadSceneAsync("MainMenu");
     }
 
     public void GameOver()
     {
         Debug.Log("Game Over");
-        StartCoroutine(QuitToMainMenu());
+        QuitToMainMenu().Forget();
     }
 
 }
